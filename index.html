@@ -20,86 +20,77 @@
             line-height: 1.6;
             margin: 0;
             padding: 0;
-            background-color: var(--light-color);
+            background: linear-gradient(to right, #f8f9fa, #e9ecef);
             color: var(--text-color);
             overflow-x: hidden;
         }
+
         .container {
             max-width: 1100px;
             margin: auto;
             padding: 0 2rem;
+            box-sizing: border-box;
         }
-        h2 { font-size: 2.5rem; margin-bottom: 1rem; }
-        .animated-section { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
-        .animated-section.is-visible { opacity: 1; transform: translateY(0); }
 
         header {
-            background: var(--white-color);
-            padding: 0.8rem 0;
-            border-bottom: 1px solid var(--border-color);
-            position: sticky;
+            position: fixed;
+            width: 100%;
             top: 0;
+            left: 0;
+            background-color: var(--white-color);
             z-index: 1000;
             transition: box-shadow 0.3s ease;
         }
-        header .container { display: flex; justify-content: space-between; align-items: center; }
-        .logo-link { display: flex; align-items: center; gap: 15px; text-decoration: none; color: var(--dark-color); }
-        .logo-link h1 { margin: 0; font-size: 1.5rem; font-weight: 600; }
-        .logo { width: 100px; height: auto; animation: pulse-glow 4s infinite ease-in-out; }
 
-        @keyframes pulse-glow {
-            0%, 100% { transform: scale(1); filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.1)); }
-            50% { transform: scale(1.05); filter: drop-shadow(0 0 8px rgba(0, 86, 179, 0.4)); }
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo-link {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .logo {
+            height: 40px;
+            margin-right: 10px;
+        }
+
+        .logo-link h1 {
+            font-size: 1.5rem;
+            margin: 0;
+        }
+
+        .desktop-nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 2rem;
+        }
+
+        .desktop-nav a {
+            text-decoration: none;
+            color: var(--dark-color);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .desktop-nav a:hover {
+            color: var(--primary-color);
         }
         
-        .desktop-nav ul { padding: 0; margin: 0; list-style: none; display: flex; }
-        .desktop-nav li { margin-left: 30px; }
-        .desktop-nav a { color: var(--text-color); text-decoration: none; font-weight: bold; position: relative; padding-bottom: 5px; }
-        .desktop-nav a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background-color: var(--primary-color); transition: width 0.3s ease; }
-        .desktop-nav a:hover::after { width: 100%; }
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            word-wrap: break-word;
+        }
 
-        /* --- СТИЛИ СЕКЦИИ HERO С "ИГРОЙ ЖИЗНЬ" --- */
-        .hero {
-            position: relative;
-            background-color: #0d1117; /* Темный фон, если canvas не загрузится */
-            color: var(--white-color);
-            padding: 6rem 0;
-            text-align: center;
-            overflow: hidden; /* Чтобы canvas не выходил за пределы */
-        }
-        #gameOfLifeCanvas {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-        }
-        .hero .container {
-            position: relative; /* Чтобы текст был над canvas */
-            z-index: 2;
-        }
-        /* Добавляем полупрозрачный слой для лучшей читаемости текста */
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(13, 17, 23, 0.7); /* Затемняющий слой */
-            z-index: 2;
-        }
-        .hero h2 { font-size: 3rem; margin-bottom: 1rem; }
-        .hero p { font-size: 1.2rem; max-width: 800px; margin: 0 auto; }
-
-        .block { padding: 4rem 0; text-align: center; }
-        .block:nth-child(even) { background: var(--white-color); }
-        .block p, .block ul { font-size: 1.1rem; max-width: 800px; margin: 1rem auto; text-align: left; }
-        .block ul { list-style: none; padding-left: 0; }
-        .block ul li { margin-bottom: 10px; padding-left: 25px; position: relative; }
-        .block ul li::before { content: '✓'; color: var(--primary-color); position: absolute; left: 0; font-weight: bold; }
-        
         .button {
             background-color: var(--primary-color);
             color: var(--white-color);
@@ -114,84 +105,228 @@
             border-radius: 5px;
             transition: all 0.3s ease;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            box-sizing: border-box;
+            white-space: nowrap; /* Важно: предотвращает перенос текста */
         }
+
         .button:hover {
             background-color: var(--primary-hover-color);
             transform: translateY(-3px);
             box-shadow: 0 4px 12px rgba(0, 86, 179, 0.3);
         }
-        .button-secondary { background-color: var(--light-color); color: var(--dark-color); border: 1px solid var(--border-color); }
-        .button-secondary:hover { background-color: #e0e0e0; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
 
-        .team-section { display: flex; align-items: center; justify-content: center; gap: 2rem; text-align: left; margin-top: 2rem; }
-        .team-section img { width: 150px; height: 150px; border-radius: 50%; object-fit: cover; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
-        
-        .partners img { max-height: 50px; opacity: 0.7; transition: opacity 0.3s ease, transform 0.3s ease; }
-        .partners img:hover { opacity: 1; transform: scale(1.05); }
-
-        footer { background: var(--dark-color); color: var(--white-color); text-align: center; padding: 2rem 0; }
-
-        .hamburger-menu { display: none; }
-        .mobile-nav { display: none; }
-
-        @media (max-width: 768px) {
-            h2 { font-size: 2rem; }
-            .container { padding: 0 1rem; }
-            .desktop-nav { display: none; }
-            .logo-link h1 { font-size: 1.2rem; }
-
-            .hamburger-menu { display: flex; flex-direction: column; justify-content: space-around; width: 30px; height: 25px; background: transparent; border: none; cursor: pointer; padding: 0; z-index: 1001; }
-            .hamburger-menu .bar { width: 100%; height: 3px; background-color: var(--dark-color); border-radius: 5px; transition: all 0.3s ease-in-out; }
-            .hamburger-menu.is-active .bar:nth-child(1) { transform: translateY(11px) rotate(45deg); }
-            .hamburger-menu.is-active .bar:nth-child(2) { opacity: 0; }
-            .hamburger-menu.is-active .bar:nth-child(3) { transform: translateY(-11px) rotate(-45deg); }
-            
-            .mobile-nav { display: flex; flex-direction: column; justify-content: center; align-items: center; position: fixed; top: 0; left: 100%; width: 100%; height: 100vh; background-color: rgba(255, 255, 255, 0.98); backdrop-filter: blur(5px); transition: left 0.4s cubic-bezier(0.77, 0, 0.175, 1); z-index: 999; }
-            .mobile-nav.is-active { left: 0; }
-            .mobile-nav ul { list-style: none; padding: 0; text-align: center; }
-            .mobile-nav li { margin-bottom: 2rem; }
-            .mobile-nav a { text-decoration: none; color: var(--dark-color); font-size: 1.8rem; font-weight: bold; }
-            
-            .hero { padding: 4rem 0; }
-            .hero h2 { font-size: 2.2rem; }
-            .team-section { flex-direction: column; }
-            .block p, .block ul { padding: 0 1rem; }
-            .button { width: calc(100% - 10px); display: block; }
+        .hero {
+            padding-top: 70px;
+            position: relative;
+            min-height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white-color);
+            overflow: hidden;
         }
-.partners img {
 
-  height: 100px; /* Установите желаемый размер */
-  object-fit: cover; /* Это гарантирует, что изображение не будет искажено */
-  border-radius: 50%; /* Делает изображение идеально круглым */
-  /* Следующие свойства уже были, но я их оставил для полноты */
-  opacity: 0.7;
-  transition: opacity 0.3s ease, transform 0.3s ease;
-}
+        .hero h2, .hero p {
+            position: relative;
+            z-index: 2;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+            max-width: 800px;
+            margin: 0 auto 20px;
+        }
 
-.partners img:hover {
-  opacity: 1;
-  transform: scale(1.05);
-}
-        /* Адаптация под планшеты */
-@media (max-width: 768px) {
-    .button {
-        font-size: 14px;
-        padding: 12px 24px;
-        margin: 8px 4px;
-    }
-}
+        #gameOfLifeCanvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
 
-/* Адаптация под мобильные телефоны */
-@media (max-width: 480px) {
-    .button {
-        font-size: 12px;
-        padding: 2px 2px;
-        margin: 0 auto;
-        width: 99%; /* чтобы кнопка занимала всю ширину контейнера на маленьких экранах */
-        box-sizing: border-box; /* чтобы padding учитывался в ширине */
-    }
-}
+        .block {
+            padding: 4rem 0;
+            text-align: center;
+        }
 
+        .block h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .team-section {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            text-align: left;
+        }
+
+        .team-section img {
+            max-width: 250px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .partners {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .partners img {
+            height: 70px;
+            max-width: 150px;
+            object-fit: contain;
+            border-radius: 0;
+            opacity: 0.7;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        .partners img:hover {
+            opacity: 1;
+            transform: scale(1.1);
+        }
+
+        footer {
+            background-color: var(--dark-color);
+            color: var(--light-color);
+            text-align: center;
+            padding: 1rem 0;
+            margin-top: 2rem;
+        }
+
+        .hamburger-menu {
+            display: none; /* Скрываем на десктопе */
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 15px;
+            z-index: 1001;
+        }
+
+        .bar {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background-color: var(--dark-color);
+            margin: 5px 0;
+            transition: all 0.3s ease;
+        }
+
+        .hamburger-menu.is-active .bar:nth-child(2) {
+            opacity: 0;
+        }
+        
+        .hamburger-menu.is-active .bar:nth-child(1) {
+            transform: translateY(8px) rotate(45deg);
+        }
+        
+        .hamburger-menu.is-active .bar:nth-child(3) {
+            transform: translateY(-8px) rotate(-45deg);
+        }
+
+        .mobile-nav {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 250px;
+            height: 100%;
+            background-color: var(--white-color);
+            box-shadow: -2px 0 10px rgba(0,0,0,0.1);
+            padding-top: 70px;
+            transform: translateX(100%); /* Изначально скрыто */
+            transition: transform 0.3s ease-in-out;
+            z-index: 999;
+            overflow-y: auto;
+        }
+
+        .mobile-nav.is-active {
+            transform: translateX(0); /* Появляется */
+        }
+
+        .mobile-nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .mobile-nav li {
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .mobile-nav a {
+            display: block;
+            padding: 15px 20px;
+            text-decoration: none;
+            color: var(--dark-color);
+            font-weight: 500;
+            transition: background-color 0.3s ease;
+        }
+        
+        .mobile-nav a:hover {
+            background-color: var(--light-color);
+        }
+
+        /* --- Анимация при прокрутке --- */
+        .animated-section {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .animated-section.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- Медиа-запросы --- */
+        @media (max-width: 768px) {
+            h2 {
+                font-size: 2rem;
+            }
+            .container {
+                padding: 0 1rem;
+            }
+            .button {
+                font-size: 14px;
+                padding: 12px 24px;
+                margin: 8px 4px;
+            }
+            .desktop-nav {
+                display: none;
+            }
+            .hamburger-menu {
+                display: block;
+            }
+            .logo-link h1 {
+                font-size: 1.2rem;
+            }
+            .team-section {
+                flex-direction: column;
+                text-align: center;
+            }
+            .team-section img {
+                max-width: 150px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h2 {
+                font-size: 1.6rem;
+            }
+            .button {
+                font-size: 12px;
+                padding: 10px 20px;
+                margin: 6px 3px;
+                width: 100%;
+                display: block;
+            }
+            .partners img {
+                max-height: 50px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -209,7 +344,7 @@
                     <li><a href="#about">Доверие</a></li>
                 </ul>
             </nav>
-            <button class="hamburger-menu">
+            <button class="hamburger-menu" aria-label="Открыть меню">
                 <span class="bar"></span>
                 <span class="bar"></span>
                 <span class="bar"></span>
@@ -225,15 +360,15 @@
         </ul>
     </nav>
 
-    <section class="hero">
-        <canvas id="gameOfLifeCanvas"></canvas>
-        <div class="container">
-            <h2>Ваша идея достойна быть услышанной в цифровую эпоху</h2>
-            <p>Проект «Цифровая философия» от Института философии СПбГУ помогает гуманитариям и IT-специалистам использовать технологии искусственного интеллекта для исследований и публикаций нового уровня.</p>
-        </div>
-    </section>
-
     <main>
+        <section class="hero">
+            <canvas id="gameOfLifeCanvas"></canvas>
+            <div class="container">
+                <h2>Ваша идея достойна быть услышанной в цифровую эпоху</h2>
+                <p>Проект «Цифровая философия» от Института философии СПбГУ помогает гуманитариям и IT-специалистам использовать технологии искусственного интеллекта для исследований и публикаций нового уровня.</p>
+            </div>
+        </section>
+
         <section class="block animated-section">
             <div class="container">
                 <h2>Чувствуете, что отстаёте?</h2>
@@ -291,7 +426,7 @@
 
     <footer class="animated-section">
         <div class="container">
-            <p>&copy; 2025 Цифровая философия |</p>
+            <p>&copy; 2025 Цифровая философия</p>
         </div>
     </footer>
 
@@ -299,14 +434,20 @@
         // --- Логика для гамбургер-меню ---
         const hamburgerMenu = document.querySelector('.hamburger-menu');
         const mobileNav = document.querySelector('.mobile-nav');
+        const body = document.body;
+
         hamburgerMenu.addEventListener('click', () => {
             hamburgerMenu.classList.toggle('is-active');
             mobileNav.classList.toggle('is-active');
+            // Дополнительная логика: блокировка скролла
+            body.style.overflow = mobileNav.classList.contains('is-active') ? 'hidden' : 'auto';
         });
+
         mobileNav.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => {
                 hamburgerMenu.classList.remove('is-active');
                 mobileNav.classList.remove('is-active');
+                body.style.overflow = 'auto'; // Снимаем блокировку скролла
             });
         });
 
@@ -350,7 +491,8 @@
             cols = Math.ceil(canvas.width / cellSize);
             rows = Math.ceil(canvas.height / cellSize);
             grid = createGrid(cols, rows);
-            animate();
+            draw();
+            animationFrameId = requestAnimationFrame(animate);
         }
 
         function createGrid(cols, rows) {
@@ -358,8 +500,7 @@
             for (let i = 0; i < arr.length; i++) {
                 arr[i] = new Array(rows);
                 for (let j = 0; j < arr[i].length; j++) {
-                    // Инициализируем случайным состоянием (живая/мертвая клетка)
-                    arr[i][j] = Math.random() > 0.8; // 20% клеток будут живыми вначале
+                    arr[i][j] = Math.random() > 0.8;
                 }
             }
             return arr;
@@ -384,13 +525,12 @@
                 for (let j = 0; j < rows; j++) {
                     const state = grid[i][j];
                     const neighbors = countNeighbors(grid, i, j);
-
                     if (state && (neighbors < 2 || neighbors > 3)) {
-                        nextGrid[i][j] = false; // Умирает от одиночества или перенаселения
+                        nextGrid[i][j] = false;
                     } else if (!state && neighbors === 3) {
-                        nextGrid[i][j] = true; // Оживает
+                        nextGrid[i][j] = true;
                     } else {
-                        nextGrid[i][j] = state; // Остается в том же состоянии
+                        nextGrid[i][j] = state;
                     }
                 }
             }
@@ -411,7 +551,7 @@
         }
 
         let lastTime = 0;
-        const fps = 10; // 10 кадров в секунду для плавной, но не слишком быстрой анимации
+        const fps = 10;
         const interval = 1000 / fps;
 
         function animate(timestamp) {
@@ -423,15 +563,8 @@
             animationFrameId = requestAnimationFrame(animate);
         }
 
-        // Запускаем при загрузке и при изменении размера окна
         window.addEventListener('load', setup);
         window.addEventListener('resize', setup);
-
     </script>
 </body>
 </html>
-
-
-
-
-
