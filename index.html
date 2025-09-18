@@ -140,7 +140,7 @@
             .desktop-nav { display: none; }
             .logo-link h1 { font-size: 1.2rem; }
 
-            .hamburger-menu { display: flex; flex-direction: column; justify-content: space-around; width: 30px; height: 25px; background: transparent; border: none; cursor: pointer; padding: 0; z-index: 1001; z-index: 9999999;}
+            .hamburger-menu { display: flex; flex-direction: column; justify-content: space-around; width: 30px; height: 25px; background: transparent; border: none; cursor: pointer; padding: 0; z-index: 1001;}
             .hamburger-menu .bar { width: 100%; height: 3px; background-color: var(--dark-color); border-radius: 5px; transition: all 0.3s ease-in-out; }
             .hamburger-menu.is-active .bar:nth-child(1) { transform: translateY(11px) rotate(45deg); }
             .hamburger-menu.is-active .bar:nth-child(2) { opacity: 0; }
@@ -156,7 +156,7 @@
             .hero h2 { font-size: 2.2rem; }
             .team-section { flex-direction: column; }
             .block p, .block ul { padding: 0 1rem; }
-            .button { width: calc(100% - 10px); display: block; }
+            .button { width: 99%;padding:1px;margin: 0 auto; display: block; }
         }
 
     </style>
@@ -307,6 +307,15 @@
         let animationFrameId;
 
         function setup() {
+            if (window.innerWidth <= 768) {
+        // Если мобильное устройство, останавливаем анимацию и очищаем canvas
+        if (animationFrameId) {
+            cancelAnimationFrame(animationFrameId);
+            animationFrameId = null;
+        }
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        return;
+    }
             if (animationFrameId) {
                 cancelAnimationFrame(animationFrameId);
             }
@@ -396,3 +405,4 @@
     </script>
 </body>
 </html>
+
