@@ -84,7 +84,7 @@
         .desktop-nav a:hover {
             color: var(--primary-color);
         }
-
+        
         h2 {
             font-size: 2.5rem;
             margin-bottom: 1rem;
@@ -106,7 +106,7 @@
             transition: all 0.3s ease;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
             box-sizing: border-box;
-            white-space: nowrap;
+            white-space: nowrap; /* Важно: предотвращает перенос текста */
         }
 
         .button:hover {
@@ -199,13 +199,12 @@
         }
 
         .hamburger-menu {
-            display: none;
+            display: none; /* Скрываем на десктопе */
             background: none;
             border: none;
             cursor: pointer;
             padding: 15px;
             z-index: 1001;
-            position: relative;
         }
 
         .bar {
@@ -214,19 +213,19 @@
             height: 3px;
             background-color: var(--dark-color);
             margin: 5px 0;
-            transition: all 0.3s ease-in-out;
-        }
-
-        .hamburger-menu.is-active .bar:nth-child(1) {
-            transform: rotate(45deg) translate(5px, 5px);
+            transition: all 0.3s ease;
         }
 
         .hamburger-menu.is-active .bar:nth-child(2) {
             opacity: 0;
         }
-
+        
+        .hamburger-menu.is-active .bar:nth-child(1) {
+            transform: translateY(8px) rotate(45deg);
+        }
+        
         .hamburger-menu.is-active .bar:nth-child(3) {
-            transform: rotate(-45deg) translate(5px, -5px);
+            transform: translateY(-8px) rotate(-45deg);
         }
 
         .mobile-nav {
@@ -238,14 +237,14 @@
             background-color: var(--white-color);
             box-shadow: -2px 0 10px rgba(0,0,0,0.1);
             padding-top: 70px;
-            transform: translateX(100%);
+            transform: translateX(100%); /* Изначально скрыто */
             transition: transform 0.3s ease-in-out;
-            z-index: 1001;
+            z-index: 999;
             overflow-y: auto;
         }
 
         .mobile-nav.is-active {
-            transform: translateX(0);
+            transform: translateX(0); /* Появляется */
         }
 
         .mobile-nav ul {
@@ -266,11 +265,12 @@
             font-weight: 500;
             transition: background-color 0.3s ease;
         }
-
+        
         .mobile-nav a:hover {
             background-color: var(--light-color);
         }
 
+        /* --- Анимация при прокрутке --- */
         .animated-section {
             opacity: 0;
             transform: translateY(30px);
@@ -281,6 +281,7 @@
             transform: translateY(0);
         }
 
+        /* --- Медиа-запросы --- */
         @media (max-width: 768px) {
             h2 {
                 font-size: 2rem;
@@ -408,7 +409,7 @@
                 </div>
             </div>
         </section>
-
+        
         <section id="about" class="block animated-section">
             <div class="container">
                 <h2>Нам доверяют</h2>
@@ -438,6 +439,7 @@
         hamburgerMenu.addEventListener('click', () => {
             hamburgerMenu.classList.toggle('is-active');
             mobileNav.classList.toggle('is-active');
+            // Дополнительная логика: блокировка скролла
             body.style.overflow = mobileNav.classList.contains('is-active') ? 'hidden' : 'auto';
         });
 
@@ -445,7 +447,7 @@
             link.addEventListener('click', () => {
                 hamburgerMenu.classList.remove('is-active');
                 mobileNav.classList.remove('is-active');
-                body.style.overflow = 'auto';
+                body.style.overflow = 'auto'; // Снимаем блокировку скролла
             });
         });
 
@@ -470,7 +472,7 @@
         // --- СКРИПТ АНИМАЦИИ "ИГРА ЖИЗНЬ" ---
         const canvas = document.getElementById('gameOfLifeCanvas');
         const ctx = canvas.getContext('2d');
-
+        
         const cellSize = 12;
         const aliveColor = 'rgba(0, 130, 255, 0.7)';
         const deadColor = 'rgba(13, 17, 23, 1)';
