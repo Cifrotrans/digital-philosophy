@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<yml_catalog date="2025-11-18T15:00:00+03:00">
+  <shop>
+    <name>Лаборатория цифровой философии</name>
+    <company>digital-philsophy.ru, СПбГУ</company>
+    <url>https://digital-philosophy.ru/</url>
+    <currencies>
+      <currency id="RUR" rate="1"/>
+    </currencies>
+    <categories>
+      <category id="1">Семинары и Курсы</category>
+    </categories>
+
+    <offers>
+      <offer id="101" available="true">
+        <url>https://digital-philosophy.ru/</url>
+        <price>0</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>1</categoryId>
+        <vendor>Лаборатория цифровой философии (СПбГУ)</vendor>
+        
+        <name>Семинар "Лаборатория цифровой философии" и курсы</name>
+        <description>
+          В рамках семинара Лаборатории цифровой философии мы проводим бесплатные курсы и связанные с ними исследования и публикации. 
+          Основные направления:  Про́мтинг в академических исследованиях ,  Вайбкодинг  и  Философия ИИ . Все занятия проводятся в  СПбГУ  по предварительной записи. 
+          Цель — соединение гуманитарного знания, ИИ и аналитики.
+        </description>
+        
+        <param name="Формат">Семинар / Курсы</param>
+        <param name="Стоимость">Бесплатно</param>
+        <param name="Место проведения">СПбГУ</param>
+        <param name="Тематика">Искусственный интеллект, Гуманитарные науки, Аналитика</param>
+        <param name="Требуется">Предварительная запись</param>
+        
+        <sales_notes>Организация исследований и публикаций по философии ИИ.</sales_notes>
+      </offer>
+
+    </offers>
+  </shop>
+</yml_catalog>
