@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Generated with https://sitemap-xml.ru-->
+<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/siteindex.xsd">
+  <url>
+    <loc>https://digital-philosophy.ru/</loc>
+    <lastmod>2025-11-18T12:43:22+03:00</lastmod>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://digital-philosophy.ru/blog.html</loc>
+    <lastmod>2025-11-18T12:43:22+03:00</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://digital-philosophy.ru/index.html</loc>
+    <lastmod>2025-11-18T12:43:22+03:00</lastmod>
+    <priority>0.8</priority>
+  </url>
+</urlset>
