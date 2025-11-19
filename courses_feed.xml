@@ -5,20 +5,22 @@
     <company>digital-philsophy.ru, СПбГУ</company>
     <url>https://digital-philosophy.ru/</url>
     <!-- ИСПРАВЛЕНИЕ 1: Добавлен обязательный элемент <picture> со ссылкой на логотип -->
-    <picture>https://digital-philosophy.ru/logo.png</picture> 
+    <picture>https://digital-philosophy.ru/assets/logo-dph.png</picture> 
     <currencies>
       <currency id="RUR" rate="1"/>
     </currencies>
+    <!-- БЛОК <categories> ВОССТАНОВЛЕН для устранения ошибки "Категории не в дереве categories" -->
     <categories>
       <category id="1">Семинары и Курсы</category>
     </categories>
+    
 
     <offers>
       <offer id="101" available="true">
         <url>https://digital-philosophy.ru/registration-page</url>
         <price>0</price>
         <currencyId>RUR</currencyId>
-        <categoryId>1</categoryId>
+        <categoryId>1</categoryId> <!-- ССЫЛКА НА ВОССТАНОВЛЕННУЮ КАТЕГОРИЮ -->
         <vendor>Лаборатория цифровой философии (СПбГУ)</vendor>
         
         <name>Семинар "Лаборатория цифровой философии" и курсы</name>
