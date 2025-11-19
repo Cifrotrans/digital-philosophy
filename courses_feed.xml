@@ -5,7 +5,7 @@
     <company>digital-philsophy.ru, СПбГУ</company>
     <url>https://digital-philosophy.ru/</url>
     <!-- ИСПРАВЛЕНИЕ 1: Добавлен обязательный элемент <picture> со ссылкой на логотип -->
-    <picture>https://digital-philosophy.ru/assets/logo-dph.png</picture> 
+    <picture>https://digital-philosophy.ru/logo.png</picture> 
     <currencies>
       <currency id="RUR" rate="1"/>
     </currencies>
