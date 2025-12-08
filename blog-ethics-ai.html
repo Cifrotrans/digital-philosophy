@@ -20,7 +20,7 @@
         :root {
             --primary-color: #1a365d;
             --secondary-color: #2d5a8c;
-            --accent-color: #f39c12;
+            --accent-color: #f312ce;
             --warning-color: #ef4444;
             --text-dark: #1f2937;
             --text-light: #6b7280;
@@ -321,23 +321,27 @@
             }
         }
     </style>
+    <link rel="stylesheet" href="./burger.css">
 </head>
 <body>
     <!-- Header -->
-    <header>
-        <div class="header-container">
-            <a href="index.html" class="logo">digital-philosophy.ru</a>
-            <nav>
-               <nav>
-                <a href="index.html">Главная</a>
-                <a href="methods-page.html">Методы</a>
-                <a href="ai-reference.html">Справочник</a>
-                <a href="#">Блог</a>
-                <a href="about-lab.html">О нас</a>
-            </nav>
-            </nav>
-        </div>
-    </header>
+<header>
+  <div class="header-container">
+    <a href="index.html" class="logo">digital-philosophy.ru</a>
+
+    <!-- Бургер-иконка -->
+    <div class="navbar-toggle" id="navbar-toggle"></div>
+
+    <!-- Навигация -->
+    <nav id="navbar-menu">
+      <a href="index.html">Главная</a>
+      <a href="methods-page.html">Методы</a>
+      <a href="ai-reference.html">Справочник</a>
+      <a href="blog-ethics-ai.html" style="color: var(--accent-color)">Блог</a>
+      <a href="about-lab.html">О нас</a>
+    </nav>
+  </div>
+</header>
 
     <!-- Article Header -->
     <section class="article-header">
@@ -467,4 +471,5 @@
         <p>© 2025. Все права защищены.</p>
     </footer>
 </body>
+<script src="burger_simple.js"></script>
 </html>
