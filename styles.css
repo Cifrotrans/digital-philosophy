@@ -1168,3 +1168,144 @@ header {
         word-break: break-word;
     }
 }
+
+/* ============================================
+   ЛОАДЕР — КОНСОЛЬ С ПРОГРЕССОМ
+   ============================================ */
+
+.terminal-loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    color: #00ff00;
+    font-family: 'Courier New', monospace;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.6s ease;
+}
+
+.terminal-loader.active {
+    opacity: 1;
+}
+
+.terminal-loader:not(.active) {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.terminal-window {
+    width: 90%;
+    max-width: 600px;
+    background: #111;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 0 30px rgba(0, 255, 255, 0.2);
+    border: 1px solid rgba(0, 255, 255, 0.2);
+}
+
+.terminal-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 0.8rem;
+    background: #222;
+    font-size: 0.8rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.terminal-title {
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: 500;
+}
+
+.terminal-body {
+    padding: 1.2rem;
+    line-height: 1.8;
+}
+
+.terminal-line {
+    font-size: 1rem;
+    margin-bottom: 0.6rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.terminal-prompt {
+    color: #ff2a6d;
+    font-weight: bold;
+    flex-shrink: 0;
+}
+
+#loader-text,
+#progress-text {
+    color: #00ff00;
+    letter-spacing: 0.5px;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
+    overflow: hidden;
+    margin-top: 0.8rem;
+}
+
+#progress-fill {
+    height: 100%;
+    width: 0;
+    background: linear-gradient(90deg, #00ffff, #00ff88);
+    border-radius: 3px;
+    transition: width 0.2s ease;
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.4);
+}
+
+/* === ПЛАШКА ПОДСКАЗКИ В ЛОАДЕРЕ === */
+
+.skip-hint {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.7);
+    justify-content: center;
+}
+
+.skip-hint .terminal-prompt {
+    color: #ff2a6d;
+    font-weight: bold;
+}
+
+.hint-text {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 0.4rem 0.8rem;
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    font-family: 'Courier New', monospace;
+}
+
+.hint-text strong {
+    color: #00ffff;
+    font-weight: 600;
+}
+
+/* Адаптив */
+@media (max-width: 600px) {
+    .hint-text {
+        font-size: 0.85rem;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.2rem;
+    }
+
+    .hint-text strong {
+        font-size: 0.95rem;
+    }
+}

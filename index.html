@@ -260,5 +260,41 @@
 <script src="js/scrollAnimation.js"></script>
 <script src="js/mobileMenu.js"></script>
 <script src="js/init.js"></script>
+<script src="js/loader.js"></script>
+<!-- ЛОАДЕР -->
+
+<!-- ЛОАДЕР -->
+<div id="terminal-loader" class="terminal-loader active">
+    <div class="terminal-window">
+        <div class="terminal-header">
+            <div class="dot" style="background: #ff5f56;"></div>
+            <div class="dot" style="background: #febc2e;"></div>
+            <div class="dot" style="background: #27c93f;"></div>
+            <span class="terminal-title">system: loading...</span>
+        </div>
+        <div class="terminal-body">
+            <div class="terminal-line">
+                <span class="terminal-prompt">&gt;_</span>
+                <span id="loader-text">Загрузка ресурсов...</span>
+            </div>
+            <div class="terminal-line">
+                <span class="terminal-prompt">&gt;_</span>
+                <span id="progress-text">Загрузка: 0%</span>
+            </div>
+            <div class="progress-bar">
+                <div id="progress-fill"></div>
+            </div>
+
+            <!-- ПЛАШКА: ПРОПУСТИТЬ -->
+            <div class="terminal-line skip-hint">
+                <span class="terminal-prompt">[?]</span>
+                <span class="hint-text">
+                    <strong>x</strong> — пропустить, 
+                    <strong>версия: сайт</strong>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>
