@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
         particlesCanvas.style.left = '0';
         particlesCanvas.style.zIndex = '1';
         particlesCanvas.style.pointerEvents = 'none';
+        particlesCanvas.style.mixBlendMode = 'screen';
         document.getElementById('hero').prepend(particlesCanvas);
 
         const floatingParticles = new FloatingParticles(particlesCanvas);
@@ -119,4 +120,124 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+
+    // === ЛОГОТИП GigaCode ВМЕСТО BETA — ПРАВЫЙ НИЖНИЙ УГОЛ ===
+    const gigacodeBadge = document.createElement('a');
+    gigacodeBadge.href = 'https://gigachat.ru/profile'; // ⬅️ измените на нужный URL
+    gigacodeBadge.target = '_blank';
+    gigacodeBadge.rel = 'noopener noreferrer';
+    gigacodeBadge.style.cssText = `
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 1000;
+        pointer-events: auto;
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-decoration: none;
+        transition: transform 0.3s ease;
+    `;
+    gigacodeBadge.innerHTML = `
+        <div style="
+            background: rgba(0, 0, 0, 0.7);
+            border: 1px solid rgba(0, 255, 255, 0.5);
+            border-radius: 50%;
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+            animation: pulse 2s infinite;
+            backdrop-filter: blur(6px);
+        ">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2L2 7L12 12L22 7L12 2Z" fill="#00FFFF"/>
+                <path d="M2 17L12 22L22 17M2 12L12 17L22 12" stroke="#00FFFF" stroke-width="2" fill="none"/>
+            </svg>
+        </div>
+        <span style="
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.7rem;
+            margin-top: 4px;
+            text-align: center;
+            width: 50px;
+        ">by GigaCode</span>
+    `;
+    document.body.appendChild(gigacodeBadge);
+
+    // Анимация пульсации
+    const style = document.createElement('style');
+    style.textContent = `
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(0, 255, 255, 0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(0, 255, 255, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(0, 255, 255, 0); }
+        }
+        ${gigacodeBadge.style.cssText} &:hover {
+            transform: scale(1.1);
+        }
+    `;
+    document.head.appendChild(style);
+
+    // === "POWERED BY AI" В ШАПКУ ===
+    const poweredByAI = document.createElement('div');
+    poweredByAI.innerHTML = `
+        <div style="
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: rgba(255, 42, 109, 0.1);
+            border-left: 1px solid rgba(255, 42, 109, 0.4);
+            border-bottom: 1px solid rgba(255, 42, 109, 0.4);
+            color: #ff2a6d;
+            font-size: 0.75rem;
+            font-weight: 500;
+            padding: 0.25rem 0.6rem;
+            z-index: 999;
+            border-bottom-left-radius: 8px;
+            backdrop-filter: blur(4px);
+            pointer-events: none;
+            white-space: nowrap;
+        ">
+            Powered by AI
+        </div>
+    `;
+    const header = document.querySelector('header');
+    if (header) {
+        header.style.position = 'relative';
+        header.appendChild(poweredByAI);
+    }
+
+    // === ПОДПИСЬ В ФУТЕР — КЛИКАБЕЛЬНАЯ ===
+    const footer = document.querySelector('footer');
+    if (footer) {
+        const aiCredit = document.createElement('p');
+        aiCredit.innerHTML = `
+            <small style="
+                display: block;
+                text-align: center;
+                margin-top: 1rem;
+                color: rgba(255, 255, 255, 0.6);
+                font-size: 0.85rem;
+                line-height: 1.5;
+                max-width: 800px;
+                margin-left: auto;
+                margin-right: auto;
+                padding: 0 1rem;
+            ">
+                Сайт разработан с использованием 
+                <a href="https://gigachat.ru/profile" 
+                   target="_blank" 
+                   style="color: #00ffff; text-decoration: underline; font-weight: 500;">
+                    GigaChat и Perplexity AI
+                </a> 
+                на основе курса, прочитанного в 
+                <strong>НИУ ВШЭ</strong> в 2025–2026 гг. и семинаров цифровой философии в СПбГУ
+            </small>
+        `;
+        footer.appendChild(aiCredit);
+    }
 });
