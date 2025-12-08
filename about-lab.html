@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="О лаборатории digital-philosophy.ru: миссия, экспертиза, сотрудничество. Соединяем гуманитарное знание с ИИ и аналитикой.">
+    <meta name="keywords" content="digital-philosophy, цифровая философия, ИИ для гуманитариев, веб-аналитика, медиаграмотность">
+    <meta property="og:title" content="О Лаборатории | digital-philosophy.ru">
+    <meta property="og:description" content="Как и почему была создана лаборатория цифровой философии. Миссия, экспертиза, возможности сотрудничества.">
+    <title>О Лаборатории | digital-philosophy.ru</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary-color: #1a365d;
+            --secondary-color: #2d5a8c;
+            --accent-color: #f39c12;
+            --success-color: #10b981;
+            --text-dark: #1f2937;
+            --text-light: #6b7280;
+            --bg-light: #f9fafb;
+            --bg-white: #ffffff;
+            --border-color: #e5e7eb;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--text-dark);
+            line-height: 1.7;
+            background-color: var(--bg-light);
+        }
+        
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-decoration: none;
+            color: white;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 2rem;
+            transition: color 0.3s;
+        }
+        
+        nav a:hover {
+            color: var(--accent-color);
+        }
+        
+        /* Page Hero */
+        .page-hero {
+            background: linear-gradient(135deg, var(--primary-color) 0%, #1e3a5f 100%);
+            color: white;
+            padding: 5rem 2rem;
+            text-align: center;
+        }
+        
+        .page-hero h1 {
+            font-size: 2.75rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+        
+        .page-hero p {
+            font-size: 1.25rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        /* Main Content */
+        main {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+        
+        /* Section Card */
+        .section-card {
+            background-color: var(--bg-white);
+            border-radius: 1rem;
+            padding: 3rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+        
+        .section-card h2 {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        
+        .section-card p {
+            font-size: 1.1rem;
+            margin-bottom: 1.25rem;
+            color: var(--text-dark);
+        }
+        
+        .section-card p:last-child {
+            margin-bottom: 0;
+        }
+        
+        /* Highlight Text */
+        .highlight {
+            color: var(--secondary-color);
+            font-weight: 600;
+        }
+        
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .stat-item {
+            text-align: center;
+            padding: 1.5rem;
+            background: linear-gradient(135deg, #f8fafc, #f1f5f9);
+            border-radius: 0.75rem;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            display: block;
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-top: 0.5rem;
+        }
+        
+        /* Expertise List */
+        .expertise-list {
+            list-style: none;
+            margin: 1.5rem 0;
+        }
+        
+        .expertise-list li {
+            padding: 0.75rem 0;
+            padding-left: 2rem;
+            position: relative;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .expertise-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .expertise-list li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--success-color);
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border-radius: 1rem;
+            padding: 3rem;
+            text-align: center;
+        }
+        
+        .cta-section h2 {
+            font-size: 1.75rem;
+            margin-bottom: 1rem;
+            color: white;
+        }
+        
+        .cta-section p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+        
+        .cta-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .cta-card {
+            background-color: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            text-align: left;
+            transition: all 0.3s;
+        }
+        
+        .cta-card:hover {
+            background-color: rgba(255,255,255,0.15);
+            transform: translateY(-3px);
+        }
+        
+        .cta-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .cta-card p {
+            font-size: 0.95rem;
+            opacity: 0.9;
+            margin-bottom: 1rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+        
+        .btn-accent {
+            background-color: var(--accent-color);
+            color: white;
+        }
+        
+        .btn-accent:hover {
+            background-color: #e67e22;
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+        
+        .btn-outline:hover {
+            background-color: white;
+            color: var(--primary-color);
+        }
+        
+        /* Contact Info */
+        .contact-info {
+            background-color: var(--bg-light);
+            border-radius: 0.75rem;
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .contact-info h3 {
+            font-size: 1.1rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+            color: var(--text-dark);
+        }
+        
+        .contact-item:last-child {
+            margin-bottom: 0;
+        }
+        
+        /* Quote */
+        .founder-quote {
+            background: linear-gradient(135deg, #fef3c7, #fde68a);
+            border-left: 4px solid var(--accent-color);
+            padding: 1.5rem 2rem;
+            border-radius: 0 0.75rem 0.75rem 0;
+            margin: 2rem 0;
+            font-style: italic;
+            font-size: 1.1rem;
+        }
+        
+        .founder-quote cite {
+            display: block;
+            margin-top: 1rem;
+            font-style: normal;
+            font-weight: 600;
+            color: var(--primary-color);
+            font-size: 0.95rem;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 3rem 2rem;
+        }
+        
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+        
+        .footer-section h4 {
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            color: var(--accent-color);
+        }
+        
+        .footer-section a {
+            display: block;
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            margin-bottom: 0.5rem;
+            transition: color 0.3s;
+        }
+        
+        .footer-section a:hover {
+            color: white;
+        }
+        
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 2rem auto 0;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            text-align: center;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .page-hero h1 {
+                font-size: 2rem;
+            }
+            
+            .section-card {
+                padding: 2rem;
+            }
+            
+            .stat-number {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <a href="index.html" class="logo">digital-philosophy.ru</a>
+            <nav>
+                <a href="index.html">Главная</a>
+                <a href="methods-page.html">Методы</a>
+                <a href="ai-reference.html">Справочник</a>
+                <a href="blog-ethics-ai.html">Блог</a>
+                <a href="#" style="color: var(--accent-color);">О нас</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Hero -->
+    <section class="page-hero">
+        <h1>🏛️ О Лаборатории</h1>
+        <p>Где гуманитарное знание встречается с искусственным интеллектом</p>
+    </section>
+
+    <!-- Main Content -->
+    <main>
+        
+        <!-- Mission Section -->
+        <section class="section-card">
+            <h2>🎯 Наша миссия</h2>
+            <p>
+                <span class="highlight">digital-philosophy.ru</span> была создана из убеждения, что гуманитарии — не пассивные потребители технологий, а ключевые участники их осмысления. В эпоху, когда машины научились говорить, создавать изображения и имитировать человеческое творчество, именно философы, историки и медиаспециалисты способны задать правильные вопросы о смысле, ценностях и последствиях.
+            </p>
+            <p>
+                Мы соединяем <span class="highlight">критическое мышление</span>, унаследованное от гуманитарных традиций, с <span class="highlight">практическими навыками</span> работы с ИИ и аналитикой. Результат — эксперты нового поколения, которые не боятся технологий, но умеют их использовать ответственно и осознанно.
+            </p>
+            
+            <div class="founder-quote">
+                «Технология даёт инструменты, но смысл придаёт человек. Мы учим не слепо верить ИИ, а критически анализировать его возможности и пределы.»
+                <cite>— Основатель digital-philosophy.ru</cite>
+            </div>
+        </section>
+
+        <!-- Expertise Section -->
+        <section class="section-card">
+            <h2>📚 Экспертиза и курс</h2>
+            <p>
+                Лаборатория основана преподавателем <span class="highlight">веб-аналитики и цифровых медиа</span> с многолетним опытом работы на стыке гуманитарного знания и технологий. Авторский курс «Искусственный интеллект и цифровые инструменты в медиа» объединяет философию, практику верификации информации, промпт-инжиниринг и этику ИИ в единую систему компетенций.
+            </p>
+            
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <span class="stat-number">49</span>
+                    <div class="stat-label">презентаций в базе знаний</div>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">3</span>
+                    <div class="stat-label">модуля обучения</div>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">16</span>
+                    <div class="stat-label">тем курса</div>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">45</span>
+                    <div class="stat-label">часов контента</div>
+                </div>
+            </div>
+            
+            <p>Курс охватывает:</p>
+            <ul class="expertise-list">
+                <li>Методологию SIFT и техники верификации информации (TinEye, InVID, Forensically)</li>
+                <li>Систематизацию знаний: SQ3R, Zettelkasten, Obsidian, Notion</li>
+                <li>Архитектуры ИИ для гуманитариев: CNN, Transformer, Foundation Models</li>
+                <li>Промпт-инжиниринг: Few-shot, Chain of Thought, Chain of Density</li>
+                <li>Мультимодальный GenAI: Midjourney, Suno AI, ElevenLabs, Sora</li>
+                <li>Этика ИИ: deepfake detection, авторское право, AI Safety</li>
+            </ul>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta-section">
+            <h2>🤝 Варианты сотрудничества</h2>
+            <p>Мы открыты к диалогу и партнёрству. Выберите подходящий формат:</p>
+            
+            <div class="cta-options">
+                <div class="cta-card">
+                    <h3>📧 Подписка на новости</h3>
+                    <p>Получайте еженедельный дайджест: новые статьи, инструменты, исследования в области этики ИИ и цифровой философии.</p>
+                    <a href="#subscribe" class="btn btn-accent">Подписаться</a>
+                </div>
+                
+                <div class="cta-card">
+                    <h3>🎓 Корпоративное обучение</h3>
+                    <p>Адаптируем курс под задачи вашей команды: редакции, маркетинг-отдела, аналитического центра.</p>
+                    <a href="#contact" class="btn btn-outline">Обсудить</a>
+                </div>
+                
+                <div class="cta-card">
+                    <h3>📖 Скачать методичку</h3>
+                    <p>Полное методическое пособие на основе 49 презентаций курса — бесплатно для подписчиков.</p>
+                    <a href="#download" class="btn btn-accent">Скачать PDF</a>
+                </div>
+            </div>
+            
+            <div class="contact-info">
+                <h3>📬 Контакты</h3>
+                <div class="contact-item">
+                    <span>🌐</span>
+                    <span>digital-philosophy.ru</span>
+                </div>
+                <div class="contact-item">
+                    <span>✉️</span>
+                    <span>contact@digital-philosophy.ru</span>
+                </div>
+                <div class="contact-item">
+                    <span>💬</span>
+                    <span>Telegram: @digitalphilosophy</span>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h4>Навигация</h4>
+                <a href="index.html">Главная</a>
+                <a href="methods-page.html">Методы аналитики</a>
+                <a href="ai-reference.html">Справочник по ИИ</a>
+                <a href="blog-ethics-ai.html">Блог</a>
+                <a href="#">О лаборатории</a>
+            </div>
+            <div class="footer-section">
+                <h4>Ресурсы</h4>
+                <a href="#">Методичка (PDF)</a>
+                <a href="#">Чек-листы</a>
+                <a href="#">Инструменты</a>
+                <a href="#">FAQ</a>
+            </div>
+            <div class="footer-section">
+                <h4>Сообщество</h4>
+                <a href="#">Telegram-канал</a>
+                <a href="#">YouTube</a>
+                <a href="#">GitHub</a>
+                <a href="#">RSS</a>
+            </div>
+            <div class="footer-section">
+                <h4>Контакты</h4>
+                <a href="mailto:contact@digital-philosophy.ru">contact@digital-philosophy.ru</a>
+                <a href="#">Telegram: @digitalphilosophy</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p><strong>digital-philosophy.ru</strong> — Цифровая философия для медиаспециалистов</p>
+            <p>© 2025. Все права защищены. Создано с ❤️ и 🤖</p>
+        </div>
+    </footer>
+</body>
+</html>

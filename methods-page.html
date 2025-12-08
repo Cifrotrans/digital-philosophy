@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Методы аналитики и верификации: фактчекинг, SQ3R, Notion vs Obsidian. Практические чек-листы для медиаспециалистов.">
+    <meta name="keywords" content="фактчекинг, верификация информации, SQ3R, TinEye, InVID, Obsidian, Notion, медиаграмотность">
+    <meta property="og:title" content="Методы Аналитики и Верификации | digital-philosophy.ru">
+    <meta property="og:description" content="Чек-листы, таблицы сравнения и практические инструменты для работы с информацией.">
+    <title>Методы Аналитики и Верификации | digital-philosophy.ru</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary-color: #1a365d;
+            --secondary-color: #2d5a8c;
+            --accent-color: #f39c12;
+            --success-color: #10b981;
+            --text-dark: #1f2937;
+            --text-light: #6b7280;
+            --bg-light: #f9fafb;
+            --bg-white: #ffffff;
+            --border-color: #e5e7eb;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--text-dark);
+            line-height: 1.6;
+            background-color: var(--bg-light);
+        }
+        
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-decoration: none;
+            color: white;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 2rem;
+            transition: color 0.3s;
+        }
+        
+        nav a:hover {
+            color: var(--accent-color);
+        }
+        
+        /* Page Hero */
+        .page-hero {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+        
+        .page-hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .page-hero p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* Main Content */
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+        
+        /* Section Styles */
+        .section {
+            background-color: var(--bg-white);
+            border-radius: 1rem;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+        
+        .section h2 {
+            font-size: 1.75rem;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        
+        .section-subtitle {
+            color: var(--text-light);
+            margin-bottom: 2rem;
+            font-size: 1rem;
+        }
+        
+        /* Checklist Styles */
+        .checklist {
+            list-style: none;
+        }
+        
+        .checklist li {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .checklist li:last-child {
+            border-bottom: none;
+        }
+        
+        .check-number {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.875rem;
+            flex-shrink: 0;
+        }
+        
+        .check-content {
+            flex: 1;
+        }
+        
+        .check-content strong {
+            color: var(--primary-color);
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+        
+        .check-content p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+        
+        .tool-tag {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 0.125rem 0.5rem;
+            border-radius: 0.25rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-left: 0.5rem;
+        }
+        
+        /* SQ3R Steps */
+        .sq3r-grid {
+            display: grid;
+            gap: 1.5rem;
+        }
+        
+        .sq3r-step {
+            background: linear-gradient(135deg, #f8fafc, #f1f5f9);
+            border-left: 4px solid var(--accent-color);
+            padding: 1.5rem;
+            border-radius: 0 0.5rem 0.5rem 0;
+        }
+        
+        .sq3r-step h3 {
+            color: var(--primary-color);
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .sq3r-step h3 span {
+            background-color: var(--accent-color);
+            color: white;
+            padding: 0.125rem 0.5rem;
+            border-radius: 0.25rem;
+            font-size: 0.875rem;
+        }
+        
+        .sq3r-step p {
+            color: var(--text-dark);
+            margin-bottom: 0.75rem;
+        }
+        
+        .sq3r-step .tip {
+            background-color: white;
+            padding: 0.75rem;
+            border-radius: 0.375rem;
+            font-size: 0.875rem;
+            color: var(--text-light);
+        }
+        
+        .sq3r-step .tip strong {
+            color: var(--success-color);
+        }
+        
+        /* Comparison Table */
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+        
+        .comparison-table th,
+        .comparison-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .comparison-table th {
+            background-color: var(--primary-color);
+            color: white;
+            font-weight: 600;
+        }
+        
+        .comparison-table th:first-child {
+            border-radius: 0.5rem 0 0 0;
+        }
+        
+        .comparison-table th:last-child {
+            border-radius: 0 0.5rem 0 0;
+        }
+        
+        .comparison-table tr:nth-child(even) {
+            background-color: var(--bg-light);
+        }
+        
+        .comparison-table tr:hover {
+            background-color: #e8f4f8;
+        }
+        
+        .comparison-table td:first-child {
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+        
+        .badge-winner {
+            background-color: var(--success-color);
+            color: white;
+            padding: 0.125rem 0.5rem;
+            border-radius: 0.25rem;
+            font-size: 0.75rem;
+            margin-left: 0.5rem;
+        }
+        
+        .badge-good {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 0.125rem 0.5rem;
+            border-radius: 0.25rem;
+            font-size: 0.75rem;
+            margin-left: 0.5rem;
+        }
+        
+        /* Verdict Box */
+        .verdict-box {
+            background: linear-gradient(135deg, #f0fdf4, #dcfce7);
+            border: 2px solid var(--success-color);
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .verdict-box h3 {
+            color: var(--success-color);
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .verdict-box p {
+            color: var(--text-dark);
+            line-height: 1.7;
+        }
+        
+        /* Quick Reference */
+        .quick-ref {
+            background-color: var(--bg-light);
+            border-radius: 0.5rem;
+            padding: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .quick-ref h4 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+        
+        .quick-ref code {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.125rem 0.375rem;
+            border-radius: 0.25rem;
+            font-size: 0.8rem;
+            margin-right: 0.5rem;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .page-hero h1 {
+                font-size: 1.75rem;
+            }
+            
+            .section {
+                padding: 1.5rem;
+            }
+            
+            .comparison-table {
+                font-size: 0.85rem;
+            }
+            
+            .comparison-table th,
+            .comparison-table td {
+                padding: 0.75rem 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <a href="index.html" class="logo">digital-philosophy.ru</a>
+            <nav>
+                <!-- <a href="index.html">Главная</a>
+                <a href="#factcheck">Фактчекинг</a>
+                <a href="#sq3r">SQ3R</a>
+                <a href="#tools">Инструменты</a> -->
+                 <a href="index.html">Главная</a>
+                <a href="methods-page.html">Методы</a>
+                <a href="ai-reference.html">Справочник</a>
+                <a href="blog-ethics-ai.html">Блог</a>
+                <a href="about-lab.html">О нас</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Hero -->
+    <section class="page-hero">
+        <h1>🔍 Методы Аналитики и Верификации</h1>
+        <p>Практические чек-листы и инструменты для работы с информацией. Проверяй, систематизируй, анализируй.</p>
+    </section>
+
+    <!-- Main Content -->
+    <main>
+        
+        <!-- Checklist 1: Factchecking -->
+        <section class="section" id="factcheck">
+            <h2>✅ Чек-лист 1: Профессиональный Фактчекинг</h2>
+            <p class="section-subtitle">7 правил верификации контента для медиаспециалиста</p>
+            
+            <ul class="checklist">
+                <li>
+                    <span class="check-number">1</span>
+                    <div class="check-content">
+                        <strong>Остановись и оцени эмоции <span class="tool-tag">SIFT</span></strong>
+                        <p>Если информация вызывает сильную эмоциональную реакцию — удивление, гнев, восторг — это сигнал усилить критический анализ, а не делиться немедленно.</p>
+                    </div>
+                </li>
+                <li>
+                    <span class="check-number">2</span>
+                    <div class="check-content">
+                        <strong>Проверь изображение через обратный поиск <span class="tool-tag">TinEye</span></strong>
+                        <p>Загрузи фото в TinEye или Google Images — если «свежая» фотография публиковалась годами ранее, перед тобой манипуляция.</p>
+                    </div>
+                </li>
+                <li>
+                    <span class="check-number">3</span>
+                    <div class="check-content">
+                        <strong>Извлеки ключевые кадры из видео <span class="tool-tag">InVID/WeVerify</span></strong>
+                        <p>Используй расширение InVID для извлечения keyframes и проверки каждого кадра отдельно через обратный поиск.</p>
+                    </div>
+                </li>
+                <li>
+                    <span class="check-number">4</span>
+                    <div class="check-content">
+                        <strong>Проанализируй EXIF-метаданные <span class="tool-tag">Forensically</span></strong>
+                        <p>Проверь дату съёмки, геолокацию и модель камеры в метаданных файла — несоответствия указывают на подделку.</p>
+                    </div>
+                </li>
+                <li>
+                    <span class="check-number">5</span>
+                    <div class="check-content">
+                        <strong>Используй латеральное чтение</strong>
+                        <p>Вместо изучения сайта-источника поищи информацию о нём в независимых источниках — что говорят другие о его репутации?</p>
+                    </div>
+                </li>
+                <li>
+                    <span class="check-number">6</span>
+                    <div class="check-content">
+                        <strong>Найди первоисточник цитаты</strong>
+                        <p>Отследи путь информации до оригинального документа, интервью или исследования — контекст часто меняет смысл.</p>
+                    </div>
+                </li>
+                <li>
+                    <span class="check-number">7</span>
+                    <div class="check-content">
+                        <strong>Проверь на признаки deepfake <span class="tool-tag">Deepware</span></strong>
+                        <p>Анализируй видео на неестественное моргание, артефакты вокруг лица, несоответствие освещения — используй Deepware Scanner.</p>
+                    </div>
+                </li>
+            </ul>
+            
+            <div class="quick-ref">
+                <h4>🔗 Быстрые ссылки на инструменты:</h4>
+                <p>
+                    <code>tineye.com</code>
+                    <code>weverify.eu</code>
+                    <code>forensically.app</code>
+                    <code>deepware.ai</code>
+                </p>
+            </div>
+        </section>
+
+        <!-- Checklist 2: SQ3R -->
+        <section class="section" id="sq3r">
+            <h2>📚 Чек-лист 2: SQ3R для Цифровых Источников</h2>
+            <p class="section-subtitle">Адаптация метода структурированного чтения для работы с медиаконтентом</p>
+            
+            <div class="sq3r-grid">
+                <div class="sq3r-step">
+                    <h3><span>S</span> Survey — Разведка (5 минут)</h3>
+                    <p>Прежде чем читать текст целиком, просканируй его структуру: заголовок, подзаголовки, выводы, инфографику. Определи тип источника: новость, мнение, исследование, PR-материал?</p>
+                    <div class="tip"><strong>💡 Для медиа:</strong> Проверь автора, издание, дату публикации. Есть ли ссылки на первоисточники?</div>
+                </div>
+                
+                <div class="sq3r-step">
+                    <h3><span>Q</span> Question — Вопросы (3 минуты)</h3>
+                    <p>Сформулируй 3–5 вопросов до чтения: Что я хочу узнать? Какие утверждения требуют проверки? Кому выгодна эта подача информации?</p>
+                    <div class="tip"><strong>💡 Для медиа:</strong> Превращай заголовки в вопросы. «ИИ заменит журналистов» → «Какие доказательства? Чьё мнение? Какой таймлайн?»</div>
+                </div>
+                
+                <div class="sq3r-step">
+                    <h3><span>R₁</span> Read — Активное чтение (15–30 минут)</h3>
+                    <p>Читай с карандашом: выделяй факты, мнения, сомнительные утверждения. Используй теги: #факт, #мнение, #проверить. Не соглашайся пассивно — фиксируй возражения.</p>
+                    <div class="tip"><strong>💡 Для медиа:</strong> Отмечай, где источник переходит от фактов к интерпретации. Ищи слова-маркеры: «считается», «по мнению экспертов», «возможно».</div>
+                </div>
+                
+                <div class="sq3r-step">
+                    <h3><span>R₂</span> Recite — Пересказ (10 минут)</h3>
+                    <p>Закрой источник и перескажи основные тезисы своими словами. Запиши в Obsidian как Literature Note. Если не можешь пересказать — понимание поверхностное.</p>
+                    <div class="tip"><strong>💡 Для медиа:</strong> Создай краткую аннотацию из 3 предложений: главный тезис, ключевое доказательство, вывод/рекомендация.</div>
+                </div>
+                
+                <div class="sq3r-step">
+                    <h3><span>R₃</span> Review — Повторение (через 24 часа)</h3>
+                    <p>Вернись к заметкам на следующий день. Свяжи новую информацию с уже имеющимися знаниями. Создай Evergreen Note, если идея выдержала проверку временем.</p>
+                    <div class="tip"><strong>💡 Для медиа:</strong> Интегрируй в граф Obsidian. Какие темы связаны? Какие противоречия с другими источниками?</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Comparison Table -->
+        <section class="section" id="tools">
+            <h2>⚖️ Сравнение Систем Заметок</h2>
+            <p class="section-subtitle">Notion vs. Obsidian: что лучше для гуманитарной систематизации?</p>
+            
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Критерий</th>
+                        <th>Obsidian</th>
+                        <th>Notion</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Хранение данных</td>
+                        <td>Локально (ваши файлы) <span class="badge-winner">Приватность</span></td>
+                        <td>Облако (серверы Notion)</td>
+                    </tr>
+                    <tr>
+                        <td>Связывание идей</td>
+                        <td>Мощные [[ссылки]], граф связей <span class="badge-winner">Лучший</span></td>
+                        <td>Базовые ссылки между страницами</td>
+                    </tr>
+                    <tr>
+                        <td>Zettelkasten-метод</td>
+                        <td>Идеально подходит <span class="badge-winner">Оптимально</span></td>
+                        <td>Возможно, но неудобно</td>
+                    </tr>
+                    <tr>
+                        <td>Совместная работа</td>
+                        <td>Ограничено (через Git)</td>
+                        <td>Встроенная коллаборация <span class="badge-winner">Лучший</span></td>
+                    </tr>
+                    <tr>
+                        <td>Базы данных</td>
+                        <td>Через плагины (Dataview)</td>
+                        <td>Мощные встроенные таблицы <span class="badge-winner">Лучший</span></td>
+                    </tr>
+                    <tr>
+                        <td>Кривая обучения</td>
+                        <td>Средняя (требует настройки)</td>
+                        <td>Низкая <span class="badge-good">Проще</span></td>
+                    </tr>
+                    <tr>
+                        <td>Интеграция с Zotero</td>
+                        <td>Отличная (Better BibTeX) <span class="badge-winner">Лучший</span></td>
+                        <td>Базовая</td>
+                    </tr>
+                    <tr>
+                        <td>Офлайн-работа</td>
+                        <td>Полная поддержка <span class="badge-winner">Лучший</span></td>
+                        <td>Ограничена</td>
+                    </tr>
+                    <tr>
+                        <td>Кастомизация</td>
+                        <td>1000+ плагинов <span class="badge-winner">Лучший</span></td>
+                        <td>Шаблоны и интеграции</td>
+                    </tr>
+                    <tr>
+                        <td>Стоимость</td>
+                        <td>Бесплатно (Sync платный)</td>
+                        <td>Freemium (Pro $10/мес)</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div class="verdict-box">
+                <h3>✅ Вердикт для гуманитариев</h3>
+                <p>
+                    <strong>Obsidian</strong> — лучший выбор для глубокой аналитической работы, построения базы знаний по методу Zettelkasten и интеграции с академическими источниками через Zotero. Граф связей позволяет находить неожиданные связи между идеями — ключевой навык для исследователя.
+                </p>
+                <p style="margin-top: 1rem;">
+                    <strong>Notion</strong> — оптимален для командной работы, управления проектами и тех, кто предпочитает интуитивный интерфейс без глубокой настройки.
+                </p>
+                <p style="margin-top: 1rem; font-weight: 600; color: var(--primary-color);">
+                    🎯 Рекомендация digital-philosophy: начните с Obsidian для персональной базы знаний, используйте Notion для коллаборации с командой.
+                </p>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p><strong>digital-philosophy.ru</strong> — Методы аналитики и верификации для медиаспециалистов</p>
+        <p>© 2025. Все права защищены.</p>
+    </footer>
+</body>
+</html>
