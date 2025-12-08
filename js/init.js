@@ -276,3 +276,64 @@ document.addEventListener('DOMContentLoaded', () => {
 
     observer.observe(quoteElement);
 });
+
+// === ЭФФЕКТ ПЕЧАТИ В КОНСОЛИ (ФУТЕР) ===
+document.addEventListener('DOMContentLoaded', () => {
+    const terminalText = document.getElementById('terminal-text');
+    if (!terminalText) return;
+
+    const messages = [
+        "AI: Initializing philosophical transformation...",
+        "System: Loading digital consciousness module...",
+        "User: Ready.",
+        "AI: Welcome to the future of critical thinking.",
+        "GigaCode v0.9.7 | digital-philosophy.ru | 2025"
+    ];
+
+    let messageIndex = 0;
+
+    function typeMessage() {
+        if (messageIndex >= messages.length) {
+            // Зацикливаем
+            setTimeout(() => {
+                messageIndex = 0;
+                terminalText.textContent = '';
+                setTimeout(typeMessage, 1000);
+            }, 3000);
+            return;
+        }
+
+        const msg = messages[messageIndex];
+        let i = 0;
+        terminalText.textContent = '';
+
+        function type() {
+            if (i < msg.length) {
+                terminalText.textContent += msg.charAt(i);
+                i++;
+                setTimeout(type, 30); // скорость печати
+            } else {
+                // Пауза перед следующим сообщением
+                setTimeout(() => {
+                    messageIndex++;
+                    setTimeout(typeMessage, 1000);
+                }, 2500);
+            }
+        }
+
+        setTimeout(type, 500);
+    }
+
+    // Запускаем, когда футер в поле зрения
+    const footerObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                typeMessage();
+                footerObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1 });
+
+    const footer = document.getElementById('terminal-footer');
+    if (footer) footerObserver.observe(footer);
+});
