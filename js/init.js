@@ -241,3 +241,38 @@ document.addEventListener('DOMContentLoaded', () => {
         footer.appendChild(aiCredit);
     }
 });
+// === ЭФФЕКТ ПЕЧАТИ ТЕКСТА В #methods ===
+document.addEventListener('DOMContentLoaded', () => {
+    const quoteElement = document.getElementById('typingQuote');
+    if (!quoteElement) return;
+
+    const originalText = quoteElement.textContent.trim();
+    quoteElement.textContent = '';
+    quoteElement.style.visibility = 'visible';
+
+    let i = 0;
+    const speed = 35;
+
+    function typeWriter() {
+        if (i < originalText.length) {
+            quoteElement.textContent += originalText.charAt(i);
+            i++;
+            setTimeout(typeWriter, speed);
+        } else {
+            // Убираем мигающий курсор после завершения
+            const cursor = document.createElement('span');
+            cursor.innerHTML = '<span style="opacity:0;">|</span>';
+            quoteElement.appendChild(cursor);
+        }
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting && i === 0) {
+                typeWriter();
+            }
+        });
+    }, { threshold: 0.2 });
+
+    observer.observe(quoteElement);
+});
