@@ -123,7 +123,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // === ЛОГОТИП GigaCode ВМЕСТО BETA — ПРАВЫЙ НИЖНИЙ УГОЛ ===
     const gigacodeBadge = document.createElement('a');
-    gigacodeBadge.href = 'https://gigachat.ru/profile'; // ⬅️ измените на нужный URL
+    gigacodeBadge.href = 'https://github.com/Cifrotrans/digital-philosophy'; // 
     gigacodeBadge.target = '_blank';
     gigacodeBadge.rel = 'noopener noreferrer';
     gigacodeBadge.style.cssText = `
@@ -229,8 +229,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 padding: 0 1rem;
             ">
                 Сайт разработан с использованием 
-                <a href="https://gigachat.ru/profile" 
-                   target="_blank" 
+                <a href="https://github.com/Cifrotrans/digital-philosophy" 
+                  
                    style="color: #00ffff; text-decoration: underline; font-weight: 500;">
                     GigaChat и Perplexity AI
                 </a> 
