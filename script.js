@@ -533,3 +533,42 @@ document.querySelectorAll('a[href^="#"]:not([href="#"])').forEach(anchor => {
         }
     });
 });
+
+document.querySelectorAll('.dropdown').forEach(dropdown => {
+    let timeout;
+
+    dropdown.addEventListener('mouseenter', () => {
+        const content = dropdown.querySelector('.dropdown-content');
+        if (content) {
+            clearTimeout(timeout);
+            content.style.opacity = '1';
+            content.style.visibility = 'visible';
+            content.style.transform = 'translateY(0)';
+        }
+    });
+
+    dropdown.addEventListener('mouseleave', () => {
+        const content = dropdown.querySelector('.dropdown-content');
+        if (content) {
+            timeout = setTimeout(() => {
+                content.style.opacity = '0';
+                content.style.visibility = 'hidden';
+                content.style.transform = 'translateY(-8px)';
+            }, 200); // задержка 200мс — успеете навести
+        }
+    });
+
+    // Защита: если мышь вошла в меню — отменить скрытие
+    const content = dropdown.querySelector('.dropdown-content');
+    if (content) {
+        content.addEventListener('mouseenter', () => {
+            clearTimeout(timeout);
+        });
+
+        content.addEventListener('mouseleave', () => {
+            dropdown.querySelector('.dropdown-content').style.opacity = '0';
+            dropdown.querySelector('.dropdown-content').style.visibility = 'hidden';
+            dropdown.querySelector('.dropdown-content').style.transform = 'translateY(-8px)';
+        });
+    }
+});
