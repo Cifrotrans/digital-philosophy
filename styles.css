@@ -605,3 +605,83 @@ footer {
         display: none; /* Полностью убираем десктопное меню */
     }
 }
+
+/* ============================================
+   DROPDOWN МЕНЮ — ЯКОРЯ С ОБОЗНАЧЕНИЕМ #
+   ============================================ */
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropbtn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    transition: color 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5ch;
+}
+
+.dropbtn:hover {
+    color: var(--accent-color);
+}
+
+.dropbtn::after {
+    content: "▼";
+    font-size: 0.7em;
+    vertical-align: middle;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: var(--primary-color);
+    min-width: 220px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+    border-radius: 8px;
+    z-index: 1000;
+    overflow: hidden;
+}
+
+.dropdown-content a {
+    color: white;
+    padding: 1rem 1.5rem;
+    text-decoration: none;
+    display: block;
+    font-size: 0.95rem;
+    transition: background 0.3s ease, padding-left 0.3s ease;
+    border-left: 3px solid transparent;
+}
+
+.dropdown-content a:hover {
+    background: var(--secondary-color);
+    padding-left: 1.75rem;
+    border-left: 3px solid var(--accent-color);
+}
+
+.dropdown-content a::before {
+    content: "# ";
+    color: var(--neon-pink);
+    font-weight: bold;
+    margin-right: 0.5ch;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Мобилка: скрываем dropdown */
+@media (max-width: 768px) {
+    .dropdown {
+        display: none;
+    }
+}

@@ -1,62 +1,81 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="shortcut icon" href="/favicon.ico" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-    <link rel="manifest" href="/site.webmanifest" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Цифровая Философия | Гуманитарий в мире машин</title>
     <meta name="description" content="Научно-исследовательская лаборатория. Применение технологий ИИ для гуманитарных исследований, критическое мышление и этика данных.">
     <meta name="keywords" content="цифровая философия, промпт-инжиниринг, искусственный интеллект, гуманитарные исследования, критическое мышление, этика ИИ">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="manifest" href="/site.webmanifest">
+
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Header with Mobile Menu -->
+    <!-- Header -->
     <header>
         <div class="header-container">
             <div class="logo">
                 <h1>digital-philosophy.ru</h1>
             </div>
 
-            <!-- Burger Menu Button -->
-<button class="burger-menu" id="burgerMenu" aria-label="Открыть меню">
-    <canvas id="burgerCanvas" width="40" height="40"></canvas>
-</button>
+            <!-- Бургер-кнопка -->
+            <button class="burger-menu" id="burgerMenu" aria-label="Открыть меню">
+                <canvas id="burgerCanvas" width="40" height="40"></canvas>
+            </button>
 
-<!-- Десктопное меню (только для больших экранов) -->
+         <!-- Десктопное меню -->
 <nav class="main-nav" id="mainNav">
-    <a href="#about">О проекте</a>
-    <a href="#philosophy">Философия</a>
-    <a href="#program">Программа</a>
-    <a href="#methods">Методы</a>
-    <a href="#challenges">Вызовы ИИ</a>
-    <a href="#contact">Контакты</a>
+    <!-- Якоря как подменю с иконкой # -->
+    <div class="dropdown">
+        <button class="dropbtn">#Разделы главной </button>
+        <div class="dropdown-content">
+            <a href="#about">🏛️ О проекте</a>
+            <a href="#philosophy">⚖️ Наша философия</a>
+            <a href="#challenges">⚡ Вызовы ИИ</a>
+            <a href="#program">📚 Программа</a>
+            <a href="#methods">🎯 Методы</a>
+            <a href="#contact">📬 Контакты</a>
+        </div>
+    </div>
+
+    <!-- Внешние страницы -->
+    <a href="index.html">Главная</a>
+                <a href="methods-page.html">Методы</a>
+                <a href="ai-reference.html">Справочник</a>
+                <a href="blog-ethics-ai.html">Блог</a>
+                <a href="about-lab.html">О нас</a>
 </nav>
 
-<!-- Мобильное всплывающее меню (скрыто на десктопе) -->
-<nav class="mobile-menu" id="mobileMenu">
-    <div class="mobile-menu-header">
-        <span>Меню</span>
-        <button id="closeMobileMenu" aria-label="Закрыть меню">
-            <canvas class="close-canvas" width="40" height="40"></canvas>
-        </button>
-    </div>
-    <ul>
-        <li><a href="#about">О проекте</a></li>
-        <li><a href="#philosophy">Философия</a></li>
-        <li><a href="#program">Программа</a></li>
-        <li><a href="#methods">Методы</a></li>
-        <li><a href="#challenges">Вызовы ИИ</a></li>
-        <li><a href="#contact">Контакты</a></li>
-    </ul>
-</nav>
+            <!-- Мобильное меню -->
+            <nav class="mobile-menu" id="mobileMenu">
+                <div class="mobile-menu-header">
+                    <span>Меню</span>
+                    <button id="closeMobileMenu" aria-label="Закрыть меню">
+                        <canvas class="close-canvas" width="40" height="40"></canvas>
+                    </button>
+                </div>
+                <ul>
+                    <li><a href="#about">О проекте</a></li>
+                    <li><a href="#philosophy">Философия</a></li>
+                    <li><a href="#program">Программа</a></li>
+                    <li><a href="#methods">Методы</a></li>
+                    <li><a href="#challenges">Вызовы ИИ</a></li>
+                    <li><a href="#contact">Контакты</a></li>
+                    <li><a href="course.html">Курс</a></li>
+                    <li><a href="blog.html">Блог</a></li>
+                    <li><a href="course.html#syllabus">Программа курса</a></li>
+                </ul>
+            </nav>
         </div>
     </header>
 
-    <!-- Hero Section with Game of Life -->
+    <!-- Hero с Game of Life -->
     <section class="hero" id="hero">
         <canvas id="gameOfLifeCanvas"></canvas>
         <div class="hero-content">
@@ -71,7 +90,7 @@
         </div>
     </section>
 
-    <!-- About Section -->
+    <!-- О проекте -->
     <section id="about" class="section">
         <div class="container">
             <h2>🏛️ Цифровая философия в действии</h2>
@@ -80,7 +99,7 @@
         </div>
     </section>
 
-    <!-- Philosophy Section -->
+    <!-- Философия -->
     <section id="philosophy" class="section bg-light">
         <div class="container">
             <h2>⚖️ Наша философия</h2>
@@ -101,7 +120,7 @@
         </div>
     </section>
 
-    <!-- Challenges Section -->
+    <!-- Вызовы ИИ -->
     <section id="challenges" class="section">
         <div class="container">
             <h2>⚡ Вызовы эпохи ИИ</h2>
@@ -130,7 +149,7 @@
         </div>
     </section>
 
-    <!-- Program Section -->
+    <!-- Программа -->
     <section id="program" class="section bg-light">
         <div class="container">
             <h2>📚 Программа обучения</h2>
@@ -168,7 +187,7 @@
         </div>
     </section>
 
-    <!-- Methods Section -->
+    <!-- Методы -->
     <section id="methods" class="section">
         <div class="container">
             <h2>🎯 Готовы к трансформации?</h2>
@@ -183,14 +202,15 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
+    <!-- Контакты -->
     <section id="contact" class="section bg-light">
         <div class="container">
             <h2>📬 Контакты</h2>
             <p>Свяжитесь с нами для получения дополнительной информации о курсах и консультациях.</p>
             <div class="contact-info">
-                <p><strong>Email:</strong> info@digital-philosophy.ru</p>
+                <p><strong>Email:</strong> <a href="mailto:info@digital-philosophy.ru">info@digital-philosophy.ru</a></p>
                 <p><strong>Сайт:</strong> <a href="https://digital-philosophy.ru">digital-philosophy.ru</a></p>
+                <p><strong>Telegram:</strong> <a href="https://t.me/digital_philosophy">@digital_philosophy</a></p>
             </div>
         </div>
     </section>

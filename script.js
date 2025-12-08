@@ -266,7 +266,7 @@ class ClosePixelIcon {
         this.maxFrames = 12;
 
         this.setTargetCross();
-        this.clear(); // начать пустым
+        this.clear();
     }
 
     createGrid() {
@@ -298,9 +298,9 @@ class ClosePixelIcon {
         }
     }
 
-    drawFrame(pixels, totalShown) {
+    drawFrame(pixels, shownCount) {
         this.grid = this.createGrid();
-        for (let i = 0; i < totalShown && i < pixels.length; i++) {
+        for (let i = 0; i < shownCount && i < pixels.length; i++) {
             const [row, col] = pixels[i];
             this.grid[row][col] = true;
         }
@@ -377,7 +377,7 @@ class ClosePixelIcon {
 // ============================================
 
 document.addEventListener('DOMContentLoaded', () => {
-    // Инициализация Game of Life в hero
+    // Инициализация Game of Life
     const heroCanvas = document.getElementById('gameOfLifeCanvas');
     if (heroCanvas) {
         const gameOfLife = new GameOfLife(heroCanvas, 20);
@@ -403,7 +403,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const closeBtn = document.getElementById('closeMobileMenu');
 
     if (!burgerButton || !mobileMenu) {
-        console.warn('Бургер или мобильное меню не найдены. Проверьте HTML.');
+        console.warn('Элементы меню не найдены.');
         return;
     }
 
@@ -418,7 +418,7 @@ document.addEventListener('DOMContentLoaded', () => {
         closeIcon = new ClosePixelIcon(closeCanvas);
     }
 
-    // === Функция: безопасно закрыть меню ===
+    // Закрытие меню
     const safeCloseMenu = () => {
         if (closeIcon && mobileMenu.classList.contains('open')) {
             closeIcon.animateOut(() => {
@@ -433,23 +433,20 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    // === Открытие/закрытие по бургеру ===
+    // Открытие/закрытие по бургеру
     burgerButton.addEventListener('click', (e) => {
         e.stopPropagation();
-
         if (!mobileMenu.classList.contains('open')) {
-            // Открытие
             mobileMenu.classList.add('open');
             document.body.style.overflow = 'hidden';
             if (burgerAnim) burgerAnim.toggle();
             if (closeIcon) closeIcon.animateIn();
         } else {
-            // Закрытие
             safeCloseMenu();
         }
     });
 
-    // === Закрытие по крестику ===
+    // Закрытие по крестику
     closeBtn?.addEventListener('click', (e) => {
         e.stopPropagation();
         if (mobileMenu.classList.contains('open')) {
@@ -457,22 +454,37 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // === Закрытие по клику на ссылку ===
+    // Закрытие по ссылке в меню
     mobileMenu.querySelectorAll('a').forEach(link => {
         link.addEventListener('click', (e) => {
-            e.preventDefault();
             const href = link.getAttribute('href');
-            safeCloseMenu();
-            setTimeout(() => {
+
+            // Если ссылка ведёт на другую страницу с якорем — ничего не блокируем
+            if (href.includes('.html#') || (href.includes('.htm#'))) {
+                return;
+            }
+
+            // Если ссылка — якорь на этой странице
+            if (href && href.startsWith('#')) {
+                e.preventDefault();
                 const target = document.querySelector(href);
                 if (target) {
-                    target.scrollIntoView({ behavior: 'smooth' });
+                    safeCloseMenu();
+                    setTimeout(() => {
+                        target.scrollIntoView({ behavior: 'smooth' });
+                    }, 400);
                 }
-            }, 400);
+                return;
+            }
+
+            // Внешняя/внутренняя страница — закрываем меню, но не блокируем переход
+            if (href && !href.startsWith('#')) {
+                safeCloseMenu();
+            }
         });
     });
 
-    // === Закрытие по клику вне меню ===
+    // Закрытие по клику вне
     document.addEventListener('click', (e) => {
         if (
             mobileMenu.classList.contains('open') &&
@@ -483,25 +495,41 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // === Закрытие при ресайзе на десктоп ===
+    // Закрытие при ресайзе
     window.addEventListener('resize', () => {
         if (window.innerWidth > 768 && mobileMenu.classList.contains('open')) {
             safeCloseMenu();
         }
     });
 
-    // === Якорная прокрутка ===
-    document.querySelectorAll('a[href^="#"]:not([id*="close"][id*="Mobile"])').forEach(anchor => {
+    // Плавная прокрутка по якорям (на этой странице)
+    document.querySelectorAll('a[href^="#"]:not([href="#"])').forEach(anchor => {
+        if (anchor.getAttribute('href').includes('.html#')) return;
+
         anchor.addEventListener('click', function (e) {
-            if (!this.href.includes('#') || this.id) return;
+            const href = this.getAttribute('href');
+            if (!href.startsWith('#') || href === '#') return;
+
             e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
+            const target = document.querySelector(href);
             if (target) {
-                target.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
             }
         });
+    });
+});
+
+// === ПЛАВНАЯ ПРОКРУТКА ПО ЯКОРЯМ ===
+document.querySelectorAll('a[href^="#"]:not([href="#"])').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        const targetId = this.getAttribute('href').substring(1);
+        const target = document.getElementById(targetId);
+        if (target) {
+            e.preventDefault();
+            target.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
     });
 });
