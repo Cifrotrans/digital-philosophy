@@ -8,7 +8,6 @@
     --accent-color: #00ffff;
     --text-color: #ffffff;
     --neon-pink: #ff2a6d;
-    --transition: all 0.3s ease;
 }
 
 * {
@@ -64,7 +63,7 @@ header {
 }
 
 /* ============================================
-   ДЕСКТОПНОЕ МЕНЮ — ВЫПАДАЮЩЕЕ, НЕ ПРОПАДАЕТ
+   ДЕСКТОПНОЕ МЕНЮ — ВЫПАДАЮЩЕЕ
    ============================================ */
 
 .main-nav {
@@ -75,14 +74,12 @@ header {
     white-space: nowrap;
 }
 
-/* Контейнер выпадающего меню */
 .dropdown {
     position: relative;
     display: inline-block;
-    padding-bottom: 5px; /* Увеличиваем зону hover */
+    padding-bottom: 5px;
 }
 
-/* Кнопка выпадающего меню */
 .dropbtn {
     background: rgba(255, 255, 255, 0.1);
     border: 1px solid rgba(255, 255, 255, 0.3);
@@ -92,7 +89,7 @@ header {
     font-weight: 500;
     cursor: pointer;
     border-radius: 6px;
-    transition: var(--transition);
+    transition: all 0.3s ease;
     display: flex;
     align-items: center;
     gap: 0.3em;
@@ -110,7 +107,6 @@ header {
     vertical-align: middle;
 }
 
-/* Выпадающее меню */
 .dropdown-content {
     position: absolute;
     top: 100%;
@@ -123,31 +119,27 @@ header {
     z-index: 1000;
     border: 1px solid rgba(255, 255, 255, 0.1);
 
-    /* Плавное появление */
     opacity: 0;
     visibility: hidden;
     transform: translateY(-8px);
     transition: opacity 0.25s ease, visibility 0.25s, transform 0.25s;
 
-    /* 🔥 ФИКС: убираем зазор между кнопкой и меню */
     margin-top: -2px;
 }
 
-/* Показываем при hover на весь .dropdown */
 .dropdown:hover .dropdown-content {
     opacity: 1;
     visibility: visible;
     transform: translateY(0);
 }
 
-/* Пункты меню */
 .dropdown-content a {
     color: white;
     padding: 0.85rem 1.25rem;
     text-decoration: none;
     display: block;
     font-size: 0.95rem;
-    transition: background 0.3s ease, padding-left 0.3s ease;
+    transition: background 0.3s ease;
     border-left: 3px solid transparent;
 }
 
@@ -157,7 +149,6 @@ header {
     border-left: 3px solid var(--accent-color);
 }
 
-/* Добавляем # перед якорями */
 .dropdown-content a::before {
     content: "# ";
     color: var(--neon-pink);
@@ -165,7 +156,6 @@ header {
     margin-right: 0.5ch;
 }
 
-/* Обычные ссылки */
 .main-nav a {
     color: white;
     text-decoration: none;
@@ -195,7 +185,7 @@ header {
 }
 
 /* ============================================
-   БУРГЕР МЕНЮ (мобильная версия)
+   БУРГЕР МЕНЮ
    ============================================ */
 
 .burger-menu {
@@ -267,7 +257,7 @@ header {
     text-decoration: none;
     padding: 0.85rem 1.5rem;
     font-size: 0.95rem;
-    transition: background 0.3s ease, padding-left 0.3s ease;
+    transition: background 0.3s ease;
     border-left: 3px solid transparent;
 }
 
@@ -278,239 +268,7 @@ header {
 }
 
 /* ============================================
-   НЕОНОВАЯ ТИПОГРАФИКА + ПОДЛОЖКА ПОД ЗАГОЛОВКИ
-   ============================================ */
-
-.hero-title,
-.section h2,
-.philosophy-card h3,
-.benefit-card h4 {
-    position: relative;
-    display: inline-block;
-    max-width: 100%;
-    margin: 0 auto 1.5rem;
-    padding: 0.5rem 1.5rem;
-    font-weight: 700;
-    text-align: center;
-    color: white;
-    line-height: 1.3;
-}
-
-.hero-title::before,
-.section h2::before,
-.philosophy-card h3::before,
-.benefit-card h4::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 255, 255, 0.1);
-    border: 1px solid rgba(0, 255, 255, 0.3);
-    backdrop-filter: blur(4px);
-    border-radius: 12px;
-    z-index: -1;
-    box-shadow: 0 0 15px rgba(0, 255, 255, 0.2);
-    transition: box-shadow 0.3s ease;
-}
-
-.hero-title:hover::before,
-.section h2:hover::before {
-    box-shadow: 0 0 25px rgba(0, 255, 255, 0.4), 0 0 40px rgba(0, 255, 255, 0.2);
-}
-
-/* ============================================
-   ТИПОГРАФИКА — ЧИТАЕМОСТЬ И ИЕРАРХИЯ
-   ============================================ */
-
-.hero-title {
-    font-size: 2.8rem;
-    line-height: 1.2;
-    letter-spacing: -0.5px;
-    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
-}
-
-.hero-subtitle {
-    font-size: 1.3rem;
-    line-height: 1.6;
-    margin-bottom: 2rem;
-    color: rgba(255, 255, 255, 0.95);
-    max-width: 700px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.section h2 {
-    font-size: 2.2rem;
-    line-height: 1.3;
-    margin-bottom: 3rem;
-    font-weight: 700;
-}
-
-.philosophy-card h3,
-.benefit-card h4 {
-    font-size: 1.35rem;
-    line-height: 1.4;
-    margin-bottom: 1rem;
-}
-
-.philosophy-card p,
-.benefit-card p {
-    font-size: 1rem;
-    line-height: 1.7;
-    color: rgba(255, 255, 255, 0.9);
-}
-
-/* ============================================
-   КАРТОЧКИ — СТИЛЬ С НЕОНОМ
-   ============================================ */
-
-/* Сетки */
-.philosophy-grid,
-.benefits-grid,
-.course-stats {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1.8rem;
-    margin-top: 2rem;
-}
-
-/* Карточки философии */
-.philosophy-card {
-    background: rgba(26, 26, 26, 0.7);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 12px;
-    padding: 1.8rem;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    backdrop-filter: blur(4px);
-}
-
-.philosophy-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(0, 255, 255, 0.15);
-    border-color: rgba(0, 255, 255, 0.4);
-}
-
-/* Карточки преимуществ */
-.benefit-card {
-    background: rgba(10, 10, 10, 0.6);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 10px;
-    padding: 1.6rem;
-    transition: all 0.3s ease;
-}
-
-.benefit-card:hover {
-    background: rgba(0, 255, 255, 0.05);
-    border-color: rgba(0, 255, 255, 0.3);
-    transform: translateY(-3px);
-    box-shadow: 0 8px 20px rgba(0, 255, 255, 0.1);
-}
-
-/* Списки навыков */
-.skills-list {
-    list-style: none;
-    margin: 1.5rem 0;
-}
-
-.skills-list li {
-    padding: 0.75rem 0;
-    font-size: 1.05rem;
-    color: rgba(255, 255, 255, 0.95);
-    position: relative;
-    padding-left: 1.8rem;
-}
-
-.skills-list li::before {
-    content: "→";
-    color: var(--accent-color);
-    font-weight: bold;
-    position: absolute;
-    left: 0;
-    transition: transform 0.2s ease;
-}
-
-.skills-list li:hover::before {
-    transform: translateX(3px);
-}
-
-/* ============================================
-   ЦИТАТА — СТИЛЬНО И ЧИТАЕМОСТЬ
-   ============================================ */
-
-.quote {
-    font-size: 1.4rem;
-    font-style: italic;
-    text-align: center;
-    max-width: 800px;
-    margin: 2.5rem auto;
-    padding: 2rem;
-    color: rgba(255, 255, 255, 0.95);
-    position: relative;
-    line-height: 1.7;
-}
-
-.quote::before {
-    content: "“";
-    font-size: 4rem;
-    position: absolute;
-    top: -20px;
-    left: -10px;
-    color: rgba(0, 255, 255, 0.15);
-    z-index: -1;
-}
-
-.quote::after {
-    content: "”";
-    font-size: 4rem;
-    position: absolute;
-    bottom: -40px;
-    right: -10px;
-    color: rgba(0, 255, 255, 0.15);
-    z-index: -1;
-}
-
-/* ============================================
-   КНОПКИ — НЕОНОВОЕ СВЕЧЕНИЕ
-   ============================================ */
-
-.cta-button {
-    display: inline-block;
-    background: var(--accent-color);
-    color: black;
-    padding: 0.95rem 2.5rem;
-    border-radius: 50px;
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 1.05rem;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(0, 255, 255, 0.4);
-    border: none;
-    letter-spacing: 0.5px;
-}
-
-.cta-button:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 25px rgba(0, 255, 255, 0.6);
-    text-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
-}
-
-.cta-button.secondary {
-    background: transparent;
-    color: white;
-    border: 2px solid white;
-    box-shadow: none;
-}
-
-.cta-button.secondary:hover {
-    background: rgba(255, 255, 255, 0.1);
-    border-color: var(--accent-color);
-    color: var(--accent-color);
-}
-
-/* ============================================
-   HERO СЕКЦИЯ
+   HERO — ЕДИНАЯ ПОДЛОЖКА ПОД ВЕСЬ ТЕКСТ
    ============================================ */
 
 .hero {
@@ -528,6 +286,15 @@ header {
     left: 0;
     width: 100%;
     height: 100%;
+    z-index: -2;
+}
+
+#particlesCanvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     z-index: -1;
 }
 
@@ -535,96 +302,54 @@ header {
     text-align: center;
     z-index: 2;
     color: white;
-    max-width: 800px;
-    padding: 2rem;
-    animation: fadeIn 1.2s ease;
+    max-width: 850px;
+    padding: 3rem 2rem;
+    position: relative;
 }
 
-/* ============================================
-   ОБЩИЕ СЕКЦИИ
-   ============================================ */
-
-.section {
-    padding: 6rem 2rem;
-    background: var(--primary-color);
+/* ОДНА НЕОНОВАЯ ПОДЛОЖКА ПОД ВЕСЬ ТЕКСТ */
+.hero-content::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 255, 255, 0.08);
+    border: 1px solid rgba(0, 255, 255, 0.3);
+    border-radius: 20px;
+    backdrop-filter: blur(8px);
+    z-index: -1;
+    box-shadow: 0 0 30px rgba(0, 255, 255, 0.15);
+    pointer-events: none;
 }
 
-.section.bg-light {
-    background: var(--secondary-color);
+/* АДАПТИВНЫЙ ТЕКСТ */
+.hero-title {
+    font-size: clamp(2.2rem, 5vw, 3.5rem);
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
+    color: white;
 }
 
-/* ============================================
-   АНИМАЦИИ
-   ============================================ */
-
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+.hero-subtitle {
+    font-size: clamp(1.1rem, 3.5vw, 1.4rem);
+    line-height: 1.6;
+    margin-bottom: 2rem;
+    color: rgba(255, 255, 255, 0.95);
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-/* ============================================
-   МЕДИА-ЗАПРОСЫ
-   ============================================ */
-
-@media (max-width: 768px) {
-    .header-container {
-        padding: 1rem;
-    }
-
-    .logo h1 {
-        font-size: 1.1rem;
-    }
-
-    .main-nav {
-        display: none;
-    }
-
-    .burger-menu {
-        display: block;
-    }
-
-    .hero-title {
-        font-size: 2rem;
-    }
-
-    .hero-subtitle {
-        font-size: 1rem;
-    }
-
-    .quote {
-        font-size: 1.2rem;
-        padding: 1.5rem;
-    }
-
-    .quote::before, .quote::after {
-        font-size: 3rem;
-    }
-}
-
-/* ============================================
-   FOOTER
-   ============================================ */
-
-footer {
-    background: var(--secondary-color);
-    padding: 2rem 0;
-    text-align: center;
-    color: rgba(255, 255, 255, 0.6);
-    font-size: 0.9rem;
-}
-
-footer .container {
-    padding: 0 1rem;
-}
-/* ============================================
-   НЕОНОВАЯ РОЗОВАЯ ПОДЛОЖКА ПОД ФИЧИ
-   ============================================ */
-
+/* ФИЧИ — ОДНА РОЗОВАЯ ПОДЛОЖКА */
 .hero-features {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 1rem;
+    gap: 1.2rem;
     margin: 2.5rem auto;
     max-width: 800px;
     position: relative;
@@ -638,7 +363,7 @@ footer .container {
     transform: translate(-50%, -50%);
     width: 100%;
     height: 65px;
-    background: rgba(255, 42, 109, 0.1); /* розовый полупрозрачный */
+    background: rgba(255, 42, 109, 0.1);
     border: 1px solid rgba(255, 42, 109, 0.4);
     border-radius: 16px;
     backdrop-filter: blur(6px);
@@ -649,13 +374,13 @@ footer .container {
 
 .hero-features .feature {
     background: rgba(255, 255, 255, 0.06);
-    padding: 0.75rem 1.5rem;
+    padding: 0.85rem 1.6rem;
     border-radius: 50px;
     font-size: 1rem;
     border: 1px solid rgba(255, 255, 255, 0.15);
     color: white;
     transition: all 0.3s ease;
-    z-index: 1;
+    min-width: 220px;
 }
 
 .hero-features .feature:hover {
@@ -664,132 +389,158 @@ footer .container {
     transform: translateY(-2px);
     box-shadow: 0 5px 15px rgba(255, 42, 109, 0.2);
 }
+
+/* КНОПКИ */
+.cta-button {
+    display: inline-block;
+    background: var(--accent-color);
+    color: black;
+    padding: 0.95rem 2.5rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.05rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 255, 255, 0.4);
+    margin: 0.6rem 0.8rem;
+}
+
+.cta-button:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba(0, 255, 255, 0.6);
+}
+
+.cta-button.secondary {
+    background: transparent;
+    color: white;
+    border: 2px solid white;
+    box-shadow: none;
+}
+
+.cta-button.secondary:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: var(--accent-color);
+    color: var(--accent-color);
+}
+
 /* ============================================
-   СТАТИСТИКА — ЦИФРЫ В НЕОНОВЫХ КАРТОЧКАХ
+   ОБЩИЕ СЕКЦИИ
    ============================================ */
 
+.section {
+    padding: clamp(4rem, 10vh, 8rem) 2rem;
+    background: var(--primary-color);
+}
+
+.section.bg-light {
+    background: var(--secondary-color);
+}
+
+.section h2 {
+    font-size: clamp(2rem, 5vw, 2.8rem);
+    line-height: 1.3;
+    margin-bottom: 2.5rem;
+    font-weight: 700;
+    text-align: center;
+    color: white;
+}
+
+/* ============================================
+   АНИМАЦИЯ ПОЯВЛЕНИЯ
+   ============================================ */
+
+.will-fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.9s ease, transform 0.9s ease;
+}
+
+.fade-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ============================================
+   КАРТОЧКИ И СТАТИСТИКА
+   ============================================ */
+
+.philosophy-grid,
+.benefits-grid,
 .course-stats {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-    gap: 1.5rem;
-    margin-top: 2.5rem;
-    margin-bottom: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.8rem;
+    margin-top: 2rem;
 }
 
+.philosophy-card,
+.benefit-card,
 .stat {
-    text-align: center;
-    padding: 1.5rem 1rem;
-    background: rgba(10, 10, 10, 0.6);
-    border: 1px solid rgba(0, 255, 255, 0.3);
-    border-radius: 12px;
-    transition: all 0.3s ease;
-    backdrop-filter: blur(4px);
-}
-
-.stat:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(0, 255, 255, 0.15);
-    border-color: rgba(0, 255, 255, 0.6);
-}
-
-.stat-number {
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: var(--accent-color);
-    text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
-    line-height: 1;
-    margin-bottom: 0.5rem;
-}
-
-.stat-label {
-    font-size: 0.95rem;
-    color: rgba(255, 255, 255, 0.85);
-    font-weight: 500;
-}
-/* ============================================
-   БЛОК "ГОТОВЫ К ТРАНСФОРМАЦИИ?" — НЕОНОВАЯ ПОДЛОЖКА
-   ============================================ */
-
-.cta-section {
-    margin-top: 3rem;
-    text-align: center;
-}
-
-.cta-section > * {
-    position: relative;
-    display: inline-block;
-}
-
-.cta-section::before {
-    content: "";
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 100%;
-    height: 140px;
-    background: rgba(0, 255, 255, 0.08);
-    border: 1px solid rgba(0, 255, 255, 0.4);
-    border-radius: 20px;
-    backdrop-filter: blur(8px);
-    z-index: -1;
-    box-shadow: 0 0 25px rgba(0, 255, 255, 0.15);
-    pointer-events: none;
-}
-
-.cta-section h2,
-.cta-section p {
-    margin-bottom: 1rem;
-    color: white;
-    z-index: 1;
+    padding: 1.8rem 1.6rem;
 }
 
 /* ============================================
-   ЦИТАТА — НЕОНОВАЯ КАРТОЧКА
+   КОНТАКТЫ
    ============================================ */
 
-.quote {
-    font-size: 1.4rem;
-    font-style: italic;
-    text-align: center;
-    max-width: 800px;
-    margin: 3.5rem auto;
-    padding: 2.5rem 2rem;
-    color: rgba(255, 255, 255, 0.95);
-    position: relative;
-    line-height: 1.7;
-    background: rgba(0, 255, 255, 0.05);
-    border: 1px solid rgba(0, 255, 255, 0.3);
-    border-radius: 16px;
-    backdrop-filter: blur(6px);
-    box-shadow: 0 0 20px rgba(0, 255, 255, 0.1);
-    transition: box-shadow 0.3s ease;
+#contact .container {
+    padding: 3rem 1.5rem;
 }
 
-.quote::before,
-.quote::after {
-    content: none; /* Убираем старые кавычки */
+.contact-info {
+    max-width: 520px;
+    margin: 2.2rem auto 0;
+    padding: 0 1.2rem;
 }
 
-.quote::before {
-    content: "“";
-    font-size: 3.5rem;
-    color: rgba(0, 255, 255, 0.2);
-    position: absolute;
-    top: 10px;
-    left: 20px;
+.contact-info p {
+    font-size: clamp(1rem, 3.5vw, 1.15rem);
+    margin-bottom: 1.8rem;
 }
 
-.quote::after {
-    content: "”";
-    font-size: 3.5rem;
-    color: rgba(0, 255, 255, 0.2);
-    position: absolute;
-    bottom: -40px;
-    right: 20px;
-}
+/* ============================================
+   МЕДИА
+   ============================================ */
 
-.quote:hover {
-    box-shadow: 0 0 30px rgba(0, 255, 255, 0.25);
-    border-color: rgba(0, 255, 255, 0.5);
+@media (max-width: 768px) {
+    .main-nav {
+        display: none;
+    }
+
+    .burger-menu {
+        display: block;
+    }
+
+    .hero-content {
+        padding: 2.5rem 1.5rem;
+    }
+
+    .hero-title {
+        font-size: 2.4rem;
+        line-height: 1.25;
+    }
+
+    .hero-subtitle {
+        font-size: 1.15rem;
+    }
+
+    .hero-features .feature {
+        font-size: 0.95rem;
+        padding: 0.75rem 1.3rem;
+        min-width: 180px;
+    }
+
+    .cta-button {
+        display: block;
+        margin: 0.8rem auto;
+        width: 85%;
+    }
+
+    .section {
+        padding: 5rem 1.5rem;
+    }
+
+    .contact-info {
+        padding: 0 1rem;
+    }
 }
