@@ -1,0 +1,65 @@
+/* ===== МОБИЛЬНОЕ МЕНЮ: БУРГЕР → КРЕСТИК ===== */
+
+/* Иконка бургера (через псевдоэлемент) */
+.navbar-toggle {
+  display: none;
+  width: 36px;
+  height: 28px;
+  cursor: pointer;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Символ: бургер (☰) */
+.navbar-toggle::before {
+  content: '\2630'; /* Символ ☰ */
+  font-size: 1.5rem;
+  color: white;
+  display: block;
+  text-align: center;
+  line-height: 1;
+}
+
+/* При активном состоянии — крестик (✕) */
+.navbar-toggle.active::before {
+  content: '\2715'; /* Символ ✕ */
+}
+
+/* Показываем бургер только на мобильных */
+@media (max-width: 768px) {
+  .navbar-toggle {
+    display: flex; /* Показываем только до 768px */
+  }
+
+  /* Меню по умолчанию скрыто */
+  #navbar-menu {
+    display: none;
+    flex-direction: column;
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    z-index: 99;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Активное меню — отображаем */
+  #navbar-menu.active {
+    display: flex;
+  }
+
+  /* Стили ссылок в меню */
+  #navbar-menu a {
+    padding: 1rem 2rem;
+    color: white;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    transition: background 0.2s;
+  }
+
+  #navbar-menu a:hover {
+    background: rgba(255, 255, 255, 0.1);
+  }
+}

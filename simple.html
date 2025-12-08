@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Digital Philosophy (Light)</title>
+    <style>
+        /* Минималистичный неон-стиль */
+        body {
+            background: #000;
+            color: #00ff00;
+            font-family: 'Courier New', monospace;
+            margin: 0;
+            padding: 2rem;
+            line-height: 1.8;
+            max-width: 900px;
+            margin: 0 auto;
+            counter-reset: section;
+        }
+
+        h1, h2, h3 {
+            color: #00ffff;
+        }
+
+        a {
+            color: #ff2a6d;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+            color: #00ffff;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+            border-bottom: 1px solid rgba(0, 255, 255, 0.3);
+            padding-bottom: 1rem;
+        }
+
+        .section {
+            margin: 2.5rem 0;
+        }
+
+        .section::before {
+            counter-increment: section;
+            content: "§ " counter(section);
+            color: rgba(0, 255, 255, 0.6);
+            font-weight: bold;
+            display: block;
+            margin-bottom: 0.8rem;
+            font-size: 0.9rem;
+        }
+
+        blockquote {
+            border-left: 3px solid #00ffff;
+            margin: 1.5rem 0;
+            padding: 0.8rem 1.2rem;
+            color: #ffffff;
+            background: rgba(0, 255, 255, 0.05);
+        }
+
+        .cta {
+            display: inline-block;
+            background: #00ffff;
+            color: black;
+            padding: 0.8rem 1.8rem;
+            border-radius: 50px;
+            font-weight: bold;
+            margin: 0.5rem 0;
+            text-align: center;
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.4);
+        }
+
+        footer {
+            margin-top: 4rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+            text-align: center;
+        }
+
+        /* Адаптив */
+        @media (max-width: 600px) {
+            body {
+                padding: 1.5rem;
+                font-size: 0.95rem;
+            }
+            .cta {
+                display: block;
+                width: 80%;
+                margin: 1rem auto;
+            }
+        }
+    </style>
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+    (function(m,e,t,r,i,k,a){
+        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+        m[i].l=1*new Date();
+        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=104710362', 'ym');
+
+    ym(104710362, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", accurateTrackBounce:true, trackLinks:true});
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/104710362" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+    <script type="text/javascript">
+(function(e, x, pe, r, i, me, nt){
+e[i]=e[i]||function(){(e[i].a=e[i].a||[]).push(arguments)},
+me=x.createElement(pe),me.async=1,me.src=r,nt=x.getElementsByTagName(pe)[0],me.addEventListener('error',function(){function cb(t){t=t[t.length-1],'function'==typeof t&&t({flags:{}})};Array.isArray(e[i].a)&&e[i].a.forEach(cb);e[i]=function(){cb(arguments)}}),nt.parentNode.insertBefore(me,nt)})
+(window, document, 'script', 'https://abt.s3.yandex.net/expjs/latest/exp.js', 'ymab');
+ymab('metrika.104710362', 'init'/*, {clientFeatures}, {callback}*/);
+</script>
+
+    <!-- Varioqub experiments -->
+<script type="text/javascript">
+(function(e, x, pe, r, i, me, nt){
+e[i]=e[i]||function(){(e[i].a=e[i].a||[]).push(arguments)},
+me=x.createElement(pe),me.async=1,me.src=r,nt=x.getElementsByTagName(pe)[0],me.addEventListener('error',function(){function cb(t){t=t[t.length-1],'function'==typeof t&&t({flags:{}})};Array.isArray(e[i].a)&&e[i].a.forEach(cb);e[i]=function(){cb(arguments)}}),nt.parentNode.insertBefore(me,nt)})
+(window, document, 'script', 'https://abt.s3.yandex.net/expjs/latest/exp.js', 'ymab');
+ymab('metrika.104710362', 'init'/*, {clientFeatures}, {callback}*/);
+</script>
+</head>
+<body>
+
+    <div class="header">
+        <h1>&gt;_ Digital Philosophy</h1>
+        <p>Курсы по критическому мышлению в эпоху ИИ</p>
+    </div>
+
+    <div class="section">
+        <h2>🎯 Готовы к трансформации?</h2>
+        <p>Присоединяйтесь к сообществу гуманитариев, которые переосмысляют роль критического мышления в эпоху ИИ.</p>
+        <blockquote>
+            «В эпоху, когда машины научились говорить, нужны люди, которые умеют слушать не только их, но и себя. Это наша задача.»
+        </blockquote>
+        <a href="#program" class="cta">🚀 Начать обучение</a>
+    </div>
+
+    <div class="section">
+        <h2>📚 Методы обучения</h2>
+        <p>Мы сочетаем классические гуманитарные практики с цифровыми инструментами:</p>
+        <ul>
+            <li>Глубокое чтение и анализ текстов</li>
+            <li>Диалог с ИИ как форма саморефлексии</li>
+            <li>Коллаборативные дебаты в смешанной реальности</li>
+            <li>Философские хакатоны</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>📊 Что вас ждёт</h2>
+        <ul>
+            <li><strong>3</strong> модуля обучения</li>
+            <li><strong>16</strong> тем с глубоким погружением</li>
+            <li><strong>49</strong> авторских презентаций</li>
+            <li><strong>45</strong> часов видео-контента</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>📞 Контакты</h2>
+        <p>Свяжитесь с нами:</p>
+        <ul>
+            <li>📧 <a href="mailto:info@digital-philosophy.ru">info@digital-philosophy.ru</a></li>
+            <li>🌐 <a href="https://digital-philosophy.ru" target="_blank">digital-philosophy.ru</a></li>
+            <li>📱 <a href="https://t.me/digital_philosophy" target="_blank">Telegram: @digital_philosophy</a></li>
+        </ul>
+    </div>
+
+    <footer>
+        <p>Сайт разработан с использованием <a href="https://gigachat.ru">GigaChat</a> и <a href="#">Зукздушен AI</a><br>
+        На основе курса, прочитанного в <strong>НИУ ВШЭ</strong>, 2025–2026 гг.</p>
+        <p>&copy; 2025 Digital Philosophy. Все права защищены.</p>
+    </footer>
+
+</body>
+</html>ччч

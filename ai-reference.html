@@ -18,7 +18,7 @@
         :root {
             --primary-color: #1a365d;
             --secondary-color: #2d5a8c;
-            --accent-color: #f39c12;
+            --accent-color: #f312a8;
             --warning-color: #ef4444;
             --success-color: #10b981;
             --purple-color: #8b5cf6;
@@ -420,8 +420,172 @@
             .tools-grid {
                 grid-template-columns: 1fr;
             }
+
+            /* ============ БУРГЕР-МЕНЮ ============ */
+            .navbar-toggle {
+                display: flex;
+            }
+
+            #navbar-menu {
+                display: none;
+                flex-direction: column;
+                background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                z-index: 99;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            }
+
+            #navbar-menu.active {
+                display: flex;
+            }
+
+            #navbar-menu a {
+                padding: 1rem 2rem;
+                color: white;
+                text-decoration: none;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+                transition: background 0.2s;
+            }
+
+            #navbar-menu a:hover {
+                background: rgba(255, 255, 255, 0.1);
+            }
         }
+
+        /* ============ БУРГЕР-МЕНЮ (всегда скрыт на десктопе) ============ */
+        .navbar-toggle {
+            display: none;
+            width: 36px;
+            height: 28px;
+            cursor: pointer;
+            position: relative;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .navbar-toggle::before {
+            content: '\2630'; /* ☰ */
+            font-size: 1.5rem;
+            color: white;
+            display: block;
+            text-align: center;
+            line-height: 1;
+        }
+
+        .navbar-toggle.active::before {
+            content: '\2715'; /* ✕ */
+        }
+        @media (max-width: 768px) {
+  .page-hero h1 {
+    font-size: 1.75rem;
+  }
+  
+  .faq-section {
+    padding: 1.5rem;
+  }
+  
+  .faq-question {
+    font-size: 1rem;
+    padding: 0.875rem 1rem;
+  }
+
+  /* Адаптивная сетка: карточки шире и лучше масштабируются */
+  .tools-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+
+  .tool-card {
+    padding: 1rem;
+    font-size: 0.95rem;
+  }
+
+  .tool-card h4 {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .tool-card p {
+    font-size: 0.85rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .tool-card .use-case {
+    font-size: 0.75rem;
+    padding: 0.5rem 0.75rem;
+  }
+
+  /* Бургер-меню */
+  .navbar-toggle {
+    display: flex;
+  }
+
+  #navbar-menu {
+    display: none;
+    flex-direction: column;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    z-index: 99;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  #navbar-menu.active {
+    display: flex;
+  }
+
+  #navbar-menu a {
+    padding: 1rem 2rem;
+    color: white;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  #navbar-menu a:hover {
+    background: rgba(255, 255, 255, 0.1);
+  }
+}
     </style>
+    <link rel="stylesheet" href="./burger.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+    <!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+    (function(m,e,t,r,i,k,a){
+        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+        m[i].l=1*new Date();
+        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=104710362', 'ym');
+
+    ym(104710362, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", accurateTrackBounce:true, trackLinks:true});
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/104710362" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+    <script type="text/javascript">
+(function(e, x, pe, r, i, me, nt){
+e[i]=e[i]||function(){(e[i].a=e[i].a||[]).push(arguments)},
+me=x.createElement(pe),me.async=1,me.src=r,nt=x.getElementsByTagName(pe)[0],me.addEventListener('error',function(){function cb(t){t=t[t.length-1],'function'==typeof t&&t({flags:{}})};Array.isArray(e[i].a)&&e[i].a.forEach(cb);e[i]=function(){cb(arguments)}}),nt.parentNode.insertBefore(me,nt)})
+(window, document, 'script', 'https://abt.s3.yandex.net/expjs/latest/exp.js', 'ymab');
+ymab('metrika.104710362', 'init'/*, {clientFeatures}, {callback}*/);
+</script>
+
+    <!-- Varioqub experiments -->
+<script type="text/javascript">
+(function(e, x, pe, r, i, me, nt){
+e[i]=e[i]||function(){(e[i].a=e[i].a||[]).push(arguments)},
+me=x.createElement(pe),me.async=1,me.src=r,nt=x.getElementsByTagName(pe)[0],me.addEventListener('error',function(){function cb(t){t=t[t.length-1],'function'==typeof t&&t({flags:{}})};Array.isArray(e[i].a)&&e[i].a.forEach(cb);e[i]=function(){cb(arguments)}}),nt.parentNode.insertBefore(me,nt)})
+(window, document, 'script', 'https://abt.s3.yandex.net/expjs/latest/exp.js', 'ymab');
+ymab('metrika.104710362', 'init'/*, {clientFeatures}, {callback}*/);
+</script>
 </head>
 <body>
     <!-- Header -->
@@ -429,15 +593,16 @@
         <div class="header-container">
             <a href="index.html" class="logo">digital-philosophy.ru</a>
 
-           
-            <nav>
-                <nav>
+            <!-- Бургер-иконка -->
+            <div class="navbar-toggle" id="navbar-toggle"></div>
+
+            <!-- Навигация -->
+            <nav id="navbar-menu">
                 <a href="index.html">Главная</a>
                 <a href="methods-page.html">Методы</a>
-                <a href="#" style="color: var(--accent-color)">Справочник</a>
+                <a href="ai-reference.html" style="color: var(--accent-color)">Справочник</a>
                 <a href="blog-ethics-ai.html">Блог</a>
                 <a href="about-lab.html">О нас</a>
-            </nav>
             </nav>
         </div>
     </header>
@@ -623,7 +788,6 @@
                 </div>
             </div>
         </section>
-
     </main>
 
     <!-- Footer -->
@@ -631,5 +795,8 @@
         <p><strong>digital-philosophy.ru</strong> — Справочник по ИИ для медиаспециалистов</p>
         <p>© 2025. Все права защищены.</p>
     </footer>
+
+    <!-- Бургер-меню скрипт -->
+    <script src="burger_simple.js"></script>
 </body>
 </html>

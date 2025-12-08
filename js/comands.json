@@ -1,0 +1,11 @@
+{
+  "pages": [
+    { "cmd": "main", "url": "index.html", "title": "Главная" },
+    { "cmd": "program", "url": "#program", "title": "Программа курса" },
+    { "cmd": "about", "url": "#about", "title": "О методах" },
+    { "cmd": "contact", "url": "#contact", "title": "Контакты" },
+    { "cmd": "blog", "url": "blog.html", "title": "Блог ИИ" },
+    { "cmd": "secret", "url": "secret.html", "title": "Секретный модуль" }
+  ],
+  "help": "Доступные команды: help, list, go [команда], exit"
+}

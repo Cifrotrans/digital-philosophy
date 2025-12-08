@@ -1,62 +1,112 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="shortcut icon" href="/favicon.ico" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-    <link rel="manifest" href="/site.webmanifest" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Цифровая Философия | Гуманитарий в мире машин</title>
     <meta name="description" content="Научно-исследовательская лаборатория. Применение технологий ИИ для гуманитарных исследований, критическое мышление и этика данных.">
     <meta name="keywords" content="цифровая философия, промпт-инжиниринг, искусственный интеллект, гуманитарные исследования, критическое мышление, этика ИИ">
+
+ 
+    <link rel="icon" type="image/png" href="favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="manifest" href="/site.webmanifest">
     <link rel="stylesheet" href="styles.css">
-</head>
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+  <!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+    (function(m,e,t,r,i,k,a){
+        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+        m[i].l=1*new Date();
+        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=104710362', 'ym');
+
+    ym(104710362, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", accurateTrackBounce:true, trackLinks:true});
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/104710362" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+    <script type="text/javascript">
+(function(e, x, pe, r, i, me, nt){
+e[i]=e[i]||function(){(e[i].a=e[i].a||[]).push(arguments)},
+me=x.createElement(pe),me.async=1,me.src=r,nt=x.getElementsByTagName(pe)[0],me.addEventListener('error',function(){function cb(t){t=t[t.length-1],'function'==typeof t&&t({flags:{}})};Array.isArray(e[i].a)&&e[i].a.forEach(cb);e[i]=function(){cb(arguments)}}),nt.parentNode.insertBefore(me,nt)})
+(window, document, 'script', 'https://abt.s3.yandex.net/expjs/latest/exp.js', 'ymab');
+ymab('metrika.104710362', 'init'/*, {clientFeatures}, {callback}*/);
+</script>
+
+    <!-- Varioqub experiments -->
+<script type="text/javascript">
+(function(e, x, pe, r, i, me, nt){
+e[i]=e[i]||function(){(e[i].a=e[i].a||[]).push(arguments)},
+me=x.createElement(pe),me.async=1,me.src=r,nt=x.getElementsByTagName(pe)[0],me.addEventListener('error',function(){function cb(t){t=t[t.length-1],'function'==typeof t&&t({flags:{}})};Array.isArray(e[i].a)&&e[i].a.forEach(cb);e[i]=function(){cb(arguments)}}),nt.parentNode.insertBefore(me,nt)})
+(window, document, 'script', 'https://abt.s3.yandex.net/expjs/latest/exp.js', 'ymab');
+ymab('metrika.104710362', 'init'/*, {clientFeatures}, {callback}*/);
+</script>
+</head> 
 <body>
-    <!-- Header with Mobile Menu -->
+    <!-- Header -->
     <header>
         <div class="header-container">
             <div class="logo">
                 <h1>digital-philosophy.ru</h1>
             </div>
 
-            <!-- Burger Menu Button -->
-<button class="burger-menu" id="burgerMenu" aria-label="Открыть меню">
-    <canvas id="burgerCanvas" width="40" height="40"></canvas>
-</button>
+            <!-- Бургер-кнопка -->
+            <button class="burger-menu" id="burgerMenu" aria-label="Открыть меню">
+                <canvas id="burgerCanvas" width="40" height="40"></canvas>
+            </button>
 
-<!-- Десктопное меню (только для больших экранов) -->
+         <!-- Десктопное меню -->
 <nav class="main-nav" id="mainNav">
-    <a href="#about">О проекте</a>
-    <a href="#philosophy">Философия</a>
-    <a href="#program">Программа</a>
-    <a href="#methods">Методы</a>
-    <a href="#challenges">Вызовы ИИ</a>
-    <a href="#contact">Контакты</a>
-</nav>
-
-<!-- Мобильное всплывающее меню (скрыто на десктопе) -->
-<nav class="mobile-menu" id="mobileMenu">
-    <div class="mobile-menu-header">
-        <span>Меню</span>
-        <button id="closeMobileMenu" aria-label="Закрыть меню">
-            <canvas class="close-canvas" width="40" height="40"></canvas>
-        </button>
+    <!-- Выпадающее меню с якорями -->
+    <div class="dropdown">
+        <button class="dropbtn">#Разделы главной</button>
+        <div class="dropdown-content">
+            <a href="#about">🏛️ О проекте</a>
+            <a href="#philosophy">⚖️ Наша философия</a>
+            <a href="#challenges">⚡ Вызовы ИИ</a>
+            <a href="#program">📚 Программа</a>
+            <a href="#methods">🎯 Методы</a>
+            <a href="#contact">📬 Контакты</a>
+        </div>
     </div>
-    <ul>
-        <li><a href="#about">О проекте</a></li>
-        <li><a href="#philosophy">Философия</a></li>
-        <li><a href="#program">Программа</a></li>
-        <li><a href="#methods">Методы</a></li>
-        <li><a href="#challenges">Вызовы ИИ</a></li>
-        <li><a href="#contact">Контакты</a></li>
-    </ul>
+
+    <!-- Остальные ссылки в строку -->
+    <a href="index.html">Главная</a>
+    <a href="methods-page.html">Методы</a>
+    <a href="ai-reference.html">Справочник</a>
+    <a href="blog-ethics-ai.html">Блог</a>
+    <a href="about-lab.html">О нас</a>
 </nav>
+            <!-- Мобильное меню -->
+            <nav class="mobile-menu" id="mobileMenu">
+                <div class="mobile-menu-header">
+                    <span>Меню</span>
+                    <button id="closeMobileMenu" aria-label="Закрыть меню">
+                        <canvas class="close-canvas" width="40" height="40"></canvas>
+                    </button>
+                </div>
+                <ul>
+                    <li><a href="#about">О проекте</a></li>
+                    <li><a href="#philosophy">Философия</a></li>
+                    <li><a href="#program">Программа</a></li>
+                    <li><a href="#methods">Методы</a></li>
+                    <li><a href="#challenges">Вызовы ИИ</a></li>
+                    <li><a href="#contact">Контакты</a></li>
+                    <li><a href="course.html">Курс</a></li>
+                    <li><a href="blog.html">Блог</a></li>
+                    <li><a href="course.html#syllabus">Программа курса</a></li>
+                </ul>
+            </nav>
         </div>
     </header>
 
-    <!-- Hero Section with Game of Life -->
+    <!-- Hero с Game of Life -->
     <section class="hero" id="hero">
         <canvas id="gameOfLifeCanvas"></canvas>
         <div class="hero-content">
@@ -71,7 +121,7 @@
         </div>
     </section>
 
-    <!-- About Section -->
+    <!-- О проекте -->
     <section id="about" class="section">
         <div class="container">
             <h2>🏛️ Цифровая философия в действии</h2>
@@ -80,7 +130,7 @@
         </div>
     </section>
 
-    <!-- Philosophy Section -->
+    <!-- Философия -->
     <section id="philosophy" class="section bg-light">
         <div class="container">
             <h2>⚖️ Наша философия</h2>
@@ -101,7 +151,7 @@
         </div>
     </section>
 
-    <!-- Challenges Section -->
+    <!-- Вызовы ИИ -->
     <section id="challenges" class="section">
         <div class="container">
             <h2>⚡ Вызовы эпохи ИИ</h2>
@@ -130,7 +180,7 @@
         </div>
     </section>
 
-    <!-- Program Section -->
+    <!-- Программа -->
     <section id="program" class="section bg-light">
         <div class="container">
             <h2>📚 Программа обучения</h2>
@@ -168,40 +218,130 @@
         </div>
     </section>
 
-    <!-- Methods Section -->
-    <section id="methods" class="section">
-        <div class="container">
-            <h2>🎯 Готовы к трансформации?</h2>
-            <p>Присоединяйтесь к сообществу гуманитариев, которые переосмысляют роль критического мышления в эпоху ИИ.</p>
-            <blockquote class="quote">
+    <!-- Методы -->
+ <!-- Методы -->
+<section id="methods" class="section" data-section="methods">
+    <div class="container">
+        <div class="quote-content">
+            <!-- AI Аватар -->
+            <div class="ai-avatar">
+                <div class="ai-eye"></div>
+                <div class="ai-glow"></div>
+            </div>
+
+            <h2 class="quote-title">🎯 Готовы к трансформации?</h2>
+            <p class="quote-subtitle">
+                Присоединяйтесь к сообществу гуманитариев, которые переосмысляют роль критического мышления в эпоху ИИ.
+            </p>
+
+            <blockquote class="neon-quote" id="typingQuote">
                 «В эпоху, когда машины научились говорить, нужны люди, которые умеют слушать не только их, но и себя. Это наша задача.»
             </blockquote>
+
             <div class="cta-section">
                 <a href="#program" class="cta-button">🚀 Начать обучение</a>
                 <a href="#about" class="cta-button secondary">📋 Посмотреть методы</a>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Contact Section -->
+    <!-- Контакты -->
     <section id="contact" class="section bg-light">
-        <div class="container">
-            <h2>📬 Контакты</h2>
-            <p>Свяжитесь с нами для получения дополнительной информации о курсах и консультациях.</p>
-            <div class="contact-info">
-                <p><strong>Email:</strong> info@digital-philosophy.ru</p>
-                <p><strong>Сайт:</strong> <a href="https://digital-philosophy.ru">digital-philosophy.ru</a></p>
+    <div class="container">
+        <h2>Контакты</h2>
+        <p class="contact-subtitle">
+            Свяжитесь с нами для получения дополнительной информации о курсах и консультациях.
+        </p>
+
+        <div class="contact-cards">
+            <a href="mailto:info@digital-philosophy.ru" class="contact-card">
+                <div class="card-icon">✉️</div>
+                <h3>Email</h3>
+                <p>info@digital-philosophy.ru</p>
+            </a>
+
+            <a href="https://digital-philosophy.ru" target="_blank" rel="noopener" class="contact-card">
+                <div class="card-icon">🌐</div>
+                <h3>Сайт</h3>
+                <p>digital-philosophy.ru</p>
+            </a>
+
+            <a href="https://t.me/digital_philosophy" target="_blank" rel="noopener" class="contact-card">
+                <div class="card-icon">📱</div>
+                <h3>Telegram</h3>
+                <p>@digital_philosophy</p>
+            </a>
+        </div>
+    </div>
+</section>
+
+ <!-- Footer -->
+<footer id="terminal-footer" class="terminal-footer">
+    <div class="terminal-content">
+        <div class="terminal-line">
+            <span class="terminal-prompt">&gt;_</span>
+            <span id="terminal-text"></span>
+            <span class="cursor">|</span>
+        </div>
+    </div>
+</footer>
+
+   <script src="js/gameOfLife.js"></script>
+<script src="js/floatingParticles.js"></script>
+<script src="js/scrollAnimation.js"></script>
+<script src="js/mobileMenu.js"></script>
+<script src="js/init.js"></script>
+<script src="js/loader.js"></script>
+<script src="js/hackerConsole.js"></script>
+<!-- ЛОАДЕР -->
+
+<!-- ЛОАДЕР -->
+<div id="terminal-loader" class="terminal-loader active">
+    <div class="terminal-window">
+        <div class="terminal-header">
+            <div class="dot" style="background: #ff5f56;"></div>
+            <div class="dot" style="background: #febc2e;"></div>
+            <div class="dot" style="background: #27c93f;"></div>
+            <span class="terminal-title">system: loading...</span>
+        </div>
+        <div class="terminal-body">
+            <div class="terminal-line">
+                <span class="terminal-prompt">&gt;_</span>
+                <span id="loader-text">Загрузка ресурсов...</span>
+            </div>
+            <div class="terminal-line">
+                <span class="terminal-prompt">&gt;_</span>
+                <span id="progress-text">Загрузка: 0%</span>
+            </div>
+            <div class="progress-bar">
+                <div id="progress-fill"></div>
+            </div>
+
+            <!-- ПЛАШКА: ПРОПУСТИТЬ -->
+            <div class="terminal-line skip-hint">
+                <span class="terminal-prompt">[?]</span>
+                <span class="hint-text">
+                    <strong>x</strong> — пропустить, 
+                    <strong>версия: сайт</strong>
+                </span>
             </div>
         </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <p>&copy; 2025 digital-philosophy.ru | Цифровая философия в действии</p>
-        </div>
-    </footer>
-
-    <script src="script.js"></script>
+    </div>
+</div>
+<!-- ХАКЕРСКАЯ КОНСОЛЬ (Ctrl + Alt + T) -->
+<div id="hacker-console" class="hacker-console hidden">
+    <div class="console-header">
+        <div class="dot" style="background:#ff5f56"></div>
+        <div class="dot" style="background:#febc2e"></div>
+        <div class="dot" style="background:#27c93f"></div>
+        <span class="title">ai_console v0.9</span>
+    </div>
+    <div id="console-output" class="console-output"></div>
+    <div class="console-input">
+        <span class="prompt">&gt;_</span>
+        <input type="text" id="console-input" autocomplete="off" spellcheck="false">
+    </div>
+</div>
 </body>
 </html>

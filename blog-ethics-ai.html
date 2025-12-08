@@ -20,7 +20,7 @@
         :root {
             --primary-color: #1a365d;
             --secondary-color: #2d5a8c;
-            --accent-color: #f39c12;
+            --accent-color: #f312ce;
             --warning-color: #ef4444;
             --text-dark: #1f2937;
             --text-light: #6b7280;
@@ -321,23 +321,60 @@
             }
         }
     </style>
+    <link rel="stylesheet" href="./burger.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+    <!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+    (function(m,e,t,r,i,k,a){
+        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+        m[i].l=1*new Date();
+        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=104710362', 'ym');
+
+    ym(104710362, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", accurateTrackBounce:true, trackLinks:true});
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/104710362" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+    <script type="text/javascript">
+(function(e, x, pe, r, i, me, nt){
+e[i]=e[i]||function(){(e[i].a=e[i].a||[]).push(arguments)},
+me=x.createElement(pe),me.async=1,me.src=r,nt=x.getElementsByTagName(pe)[0],me.addEventListener('error',function(){function cb(t){t=t[t.length-1],'function'==typeof t&&t({flags:{}})};Array.isArray(e[i].a)&&e[i].a.forEach(cb);e[i]=function(){cb(arguments)}}),nt.parentNode.insertBefore(me,nt)})
+(window, document, 'script', 'https://abt.s3.yandex.net/expjs/latest/exp.js', 'ymab');
+ymab('metrika.104710362', 'init'/*, {clientFeatures}, {callback}*/);
+</script>
+
+    <!-- Varioqub experiments -->
+<script type="text/javascript">
+(function(e, x, pe, r, i, me, nt){
+e[i]=e[i]||function(){(e[i].a=e[i].a||[]).push(arguments)},
+me=x.createElement(pe),me.async=1,me.src=r,nt=x.getElementsByTagName(pe)[0],me.addEventListener('error',function(){function cb(t){t=t[t.length-1],'function'==typeof t&&t({flags:{}})};Array.isArray(e[i].a)&&e[i].a.forEach(cb);e[i]=function(){cb(arguments)}}),nt.parentNode.insertBefore(me,nt)})
+(window, document, 'script', 'https://abt.s3.yandex.net/expjs/latest/exp.js', 'ymab');
+ymab('metrika.104710362', 'init'/*, {clientFeatures}, {callback}*/);
+</script>
 </head>
 <body>
     <!-- Header -->
-    <header>
-        <div class="header-container">
-            <a href="index.html" class="logo">digital-philosophy.ru</a>
-            <nav>
-               <nav>
-                <a href="index.html">Главная</a>
-                <a href="methods-page.html">Методы</a>
-                <a href="ai-reference.html">Справочник</a>
-                <a href="#">Блог</a>
-                <a href="about-lab.html">О нас</a>
-            </nav>
-            </nav>
-        </div>
-    </header>
+<header>
+  <div class="header-container">
+    <a href="index.html" class="logo">digital-philosophy.ru</a>
+
+    <!-- Бургер-иконка -->
+    <div class="navbar-toggle" id="navbar-toggle"></div>
+
+    <!-- Навигация -->
+    <nav id="navbar-menu">
+      <a href="index.html">Главная</a>
+      <a href="methods-page.html">Методы</a>
+      <a href="ai-reference.html">Справочник</a>
+      <a href="blog-ethics-ai.html" style="color: var(--accent-color)">Блог</a>
+      <a href="about-lab.html">О нас</a>
+    </nav>
+  </div>
+</header>
 
     <!-- Article Header -->
     <section class="article-header">
@@ -442,8 +479,8 @@
                 <h3>Продолжим разговор?</h3>
                 <p>Этика ИИ — это живая дискуссия, а не закрытый вопрос. Ваш взгляд важен.</p>
                 <div class="cta-buttons">
-                    <a href="#comments" class="btn btn-secondary">💬 Обсудить в комментариях</a>
-                    <a href="#" class="btn btn-primary">📥 Скачать полную методичку</a>
+                    <a href="https://t.me/digital_philosophy_ru" class="btn btn-secondary">💬  Обсудить</a>
+                    <!-- <a href="#" class="btn btn-primary">📥 Скачать полную методичку</a> -->
                 </div>
             </div>
             
@@ -467,4 +504,5 @@
         <p>© 2025. Все права защищены.</p>
     </footer>
 </body>
+<script src="burger_simple.js"></script>
 </html>

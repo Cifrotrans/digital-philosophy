@@ -7,6 +7,10 @@
     <meta name="keywords" content="digital-philosophy, цифровая философия, ИИ для гуманитариев, веб-аналитика, медиаграмотность">
     <meta property="og:title" content="О Лаборатории | digital-philosophy.ru">
     <meta property="og:description" content="Как и почему была создана лаборатория цифровой философии. Миссия, экспертиза, возможности сотрудничества.">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
     <title>О Лаборатории | digital-philosophy.ru</title>
     <style>
         * {
@@ -18,7 +22,7 @@
         :root {
             --primary-color: #1a365d;
             --secondary-color: #2d5a8c;
-            --accent-color: #f39c12;
+            --accent-color: #f31295;
             --success-color: #10b981;
             --text-dark: #1f2937;
             --text-light: #6b7280;
@@ -382,25 +386,61 @@
             }
         }
     </style>
+    <link rel="stylesheet" href="burger.css">
+    <!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+    (function(m,e,t,r,i,k,a){
+        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+        m[i].l=1*new Date();
+        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=104710362', 'ym');
+
+    ym(104710362, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", accurateTrackBounce:true, trackLinks:true});
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/104710362" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+    <script type="text/javascript">
+(function(e, x, pe, r, i, me, nt){
+e[i]=e[i]||function(){(e[i].a=e[i].a||[]).push(arguments)},
+me=x.createElement(pe),me.async=1,me.src=r,nt=x.getElementsByTagName(pe)[0],me.addEventListener('error',function(){function cb(t){t=t[t.length-1],'function'==typeof t&&t({flags:{}})};Array.isArray(e[i].a)&&e[i].a.forEach(cb);e[i]=function(){cb(arguments)}}),nt.parentNode.insertBefore(me,nt)})
+(window, document, 'script', 'https://abt.s3.yandex.net/expjs/latest/exp.js', 'ymab');
+ymab('metrika.104710362', 'init'/*, {clientFeatures}, {callback}*/);
+</script>
+
+    <!-- Varioqub experiments -->
+<script type="text/javascript">
+(function(e, x, pe, r, i, me, nt){
+e[i]=e[i]||function(){(e[i].a=e[i].a||[]).push(arguments)},
+me=x.createElement(pe),me.async=1,me.src=r,nt=x.getElementsByTagName(pe)[0],me.addEventListener('error',function(){function cb(t){t=t[t.length-1],'function'==typeof t&&t({flags:{}})};Array.isArray(e[i].a)&&e[i].a.forEach(cb);e[i]=function(){cb(arguments)}}),nt.parentNode.insertBefore(me,nt)})
+(window, document, 'script', 'https://abt.s3.yandex.net/expjs/latest/exp.js', 'ymab');
+ymab('metrika.104710362', 'init'/*, {clientFeatures}, {callback}*/);
+</script>
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <div class="header-container">
-            <a href="index.html" class="logo">digital-philosophy.ru</a>
-            <nav>
-                <a href="index.html">Главная</a>
-                <a href="methods-page.html">Методы</a>
-                <a href="ai-reference.html">Справочник</a>
-                <a href="blog-ethics-ai.html">Блог</a>
-                <a href="#" style="color: var(--accent-color);">О нас</a>
-            </nav>
-        </div>
-    </header>
+<!-- Header -->
+<header>
+  <div class="header-container">
+    <a href="index.html" class="logo">digital-philosophy.ru</a>
+
+    <!-- Бургер-иконка -->
+    <div class="navbar-toggle" id="navbar-toggle"></div>
+
+    <!-- Навигация -->
+    <nav id="navbar-menu">
+      <a href="index.html">Главная</a>
+      <a href="methods-page.html">Методы</a>
+      <a href="ai-reference.html">Справочник</a>
+      <a href="blog-ethics-ai.html">Блог</a>
+      <a href="about-lab.html">О нас</a>
+    </nav>
+  </div>
+</header>
 
     <!-- Page Hero -->
     <section class="page-hero">
-        <h1>🏛️ О Лаборатории</h1>
+         
+        <h1><img src="./" alt=""> <img src="./favicon-32x32.png" alt=""> О Лаборатории</h1>
         <p>Где гуманитарное знание встречается с искусственным интеллектом</p>
     </section>
 
@@ -469,19 +509,24 @@
                 <div class="cta-card">
                     <h3>📧 Подписка на новости</h3>
                     <p>Получайте еженедельный дайджест: новые статьи, инструменты, исследования в области этики ИИ и цифровой философии.</p>
-                    <a href="#subscribe" class="btn btn-accent">Подписаться</a>
+                    <a href="https://t.me/digital_philosophy_ru" class="btn btn-accent">Подписаться</a>
                 </div>
                 
                 <div class="cta-card">
                     <h3>🎓 Корпоративное обучение</h3>
                     <p>Адаптируем курс под задачи вашей команды: редакции, маркетинг-отдела, аналитического центра.</p>
-                    <a href="#contact" class="btn btn-outline">Обсудить</a>
+                    <a href="https://t.me/YarochkinDA" class="btn btn-outline">Обсудить</a>
                 </div>
                 
                 <div class="cta-card">
                     <h3>📖 Скачать методичку</h3>
                     <p>Полное методическое пособие на основе 49 презентаций курса — бесплатно для подписчиков.</p>
-                    <a href="#download" class="btn btn-accent">Скачать PDF</a>
+                   
+                    <a href="metodichka.pdf" 
+   download="методичка-digital-philosophy.ru.pdf" 
+   class="btn btn-accent">
+   📥 Скачать методичку (PDF)
+</a>
                 </div>
             </div>
             
@@ -489,15 +534,18 @@
                 <h3>📬 Контакты</h3>
                 <div class="contact-item">
                     <span>🌐</span>
-                    <span>digital-philosophy.ru</span>
+                    <span>digital-philosophy.ru</span> <br>
+                    <hr>
+                    <div>
+                 
                 </div>
                 <div class="contact-item">
                     <span>✉️</span>
-                    <span>contact@digital-philosophy.ru</span>
+                    <span>submit@digital-philosophy.ru</span>
                 </div>
                 <div class="contact-item">
                     <span>💬</span>
-                    <span>Telegram: @digitalphilosophy</span>
+                    <span>Telegram: @digital_philosophy_ru</span>
                 </div>
             </div>
         </section>
@@ -517,22 +565,26 @@
             </div>
             <div class="footer-section">
                 <h4>Ресурсы</h4>
-                <a href="#">Методичка (PDF)</a>
-                <a href="#">Чек-листы</a>
+               <a href="metodichka.pdf" 
+   download="методичка-digital-philosophy.ru.pdf" 
+   class="btn btn-primary">
+   📥 Скачать методичку (PDF)
+</a>
+                <!-- <a href="#">Чек-листы</a>
                 <a href="#">Инструменты</a>
-                <a href="#">FAQ</a>
+                <a href="#">FAQ</a> -->
             </div>
             <div class="footer-section">
                 <h4>Сообщество</h4>
-                <a href="#">Telegram-канал</a>
-                <a href="#">YouTube</a>
-                <a href="#">GitHub</a>
-                <a href="#">RSS</a>
+                <a href="https://t.me/digital_philosophy_ru">Telegram-канал</a>
+                <a href="https://vkvideo.ru/@aisafety">VKvideo</a>
+                <a href="https://github.com/Cifrotrans/digital-philosophy">GitHub</a>
+                
             </div>
             <div class="footer-section">
                 <h4>Контакты</h4>
-                <a href="mailto:contact@digital-philosophy.ru">contact@digital-philosophy.ru</a>
-                <a href="#">Telegram: @digitalphilosophy</a>
+                <a href="mailto:contact@digital-philosophy.ru">submit@digital-philosophy.ru</a>
+                <a href="https://t.me/digital_philosophy_ru">Telegram: @digital_philosophy_ru</a>
             </div>
         </div>
         <div class="footer-bottom">
@@ -540,5 +592,6 @@
             <p>© 2025. Все права защищены. Создано с ❤️ и 🤖</p>
         </div>
     </footer>
+    <script src="burger_simple.js"></script>
 </body>
 </html>
