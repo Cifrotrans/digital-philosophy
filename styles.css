@@ -303,8 +303,8 @@ header {
     z-index: 2;
     color: white;
     max-width: 750px;
-   max-height:400px;
-    padding: 3rem 2rem;
+   max-height:300px;
+    padding: 2rem 1rem;
     position: relative;
 }
 
