@@ -273,7 +273,7 @@ header {
 
 .hero {
     position: relative;
-    height: 100vh;
+    min-height: 100vh; /* вместо height */
     overflow: hidden;
     display: flex;
     align-items: center;
