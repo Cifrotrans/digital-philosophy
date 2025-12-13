@@ -1,46 +1,76 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // === Game of Life ===
+
+    // ========================================================
+    // === НОВАЯ ЛОГИКА: ПРОВЕРКА НА ТИП БРАУЗЕРА (МОБИЛЬНЫЙ) ===
+    // ========================================================
+    /**
+     * Определяет, запущен ли код в мобильном браузере, 
+     * используя комбинацию User Agent и сенсорных возможностей.
+     * Если true, к body добавляется класс 'is-mobile-browser'.
+     */
+    const isMobileBrowser = () => {
+        const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+        
+        // 1. Проверка по User Agent (самый надежный способ)
+        if (/android|iphone|ipad|ipod|blackberry|iemobile|opera mini/i.test(userAgent)) {
+            return true;
+        }
+        
+        // 2. Дополнительная проверка на наличие сенсорного экрана (помогает для некоторых планшетов)
+        return 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+    };
+
+    if (isMobileBrowser()) {
+        document.body.classList.add('is-mobile-browser');
+    }
+    // ========================================================
+    
+
+    // === Game of Life & Particles (Анимации на Hero) ===
     const heroCanvas = document.getElementById('gameOfLifeCanvas');
     if (heroCanvas) {
-        const gameOfLife = new GameOfLife(heroCanvas, 20);
-        gameOfLife.start();
-
-        // === Частицы, следующие за курсором ===
-        const particlesCanvas = document.createElement('canvas');
-        particlesCanvas.id = 'particlesCanvas';
-        particlesCanvas.style.position = 'absolute';
-        particlesCanvas.style.top = '0';
-        particlesCanvas.style.left = '0';
-        particlesCanvas.style.zIndex = '1';
-        particlesCanvas.style.pointerEvents = 'none';
-        particlesCanvas.style.mixBlendMode = 'screen';
-        document.getElementById('hero').prepend(particlesCanvas);
-
-        const floatingParticles = new FloatingParticles(particlesCanvas);
-        floatingParticles.resize();
-
-        window.addEventListener('resize', () => {
-            floatingParticles.resize();
-            gameOfLife.stop();
-            gameOfLife.resizeCanvas();
-            gameOfLife.cols = Math.floor(gameOfLife.canvas.width / gameOfLife.cellSize);
-            gameOfLife.rows = Math.floor(gameOfLife.canvas.height / gameOfLife.cellSize);
-            gameOfLife.grid = gameOfLife.createGrid();
-            gameOfLife.nextGrid = gameOfLife.createGrid();
-            gameOfLife.randomize(0.15);
+        // Убедимся, что не запускаем тяжелые анимации на мобильных,
+        // если в стилях мы решили полностью скрыть канвас для мобильной версии.
+        // Если вы хотите отключить анимацию, когда обнаружен мобильный браузер:
+        // if (!document.body.classList.contains('is-mobile-browser')) {
+            const gameOfLife = new GameOfLife(heroCanvas, 20);
             gameOfLife.start();
-        });
+
+            const particlesCanvas = document.createElement('canvas');
+            particlesCanvas.id = 'particlesCanvas';
+            particlesCanvas.style.cssText = `
+                position: absolute; top: 0; left: 0; z-index: 1; pointer-events: none; mix-blend-mode: screen;
+            `;
+            document.getElementById('hero').prepend(particlesCanvas);
+
+            const floatingParticles = new FloatingParticles(particlesCanvas);
+            floatingParticles.resize();
+
+            window.addEventListener('resize', () => {
+                floatingParticles.resize();
+                gameOfLife.stop();
+                gameOfLife.resizeCanvas();
+                gameOfLife.cols = Math.floor(gameOfLife.canvas.width / gameOfLife.cellSize);
+                gameOfLife.rows = Math.floor(gameOfLife.canvas.height / gameOfLife.cellSize);
+                gameOfLife.grid = gameOfLife.createGrid();
+                gameOfLife.nextGrid = gameOfLife.createGrid();
+                gameOfLife.randomize(0.15);
+                gameOfLife.start();
+            });
+        // }
     }
 
-    // === Анимация появления ===
+    // === Анимация появления элементов при скролле ===
+    // Предполагается, что класс ScrollAnimation определен в другом месте
     new ScrollAnimation();
 
-    // === Бургер и меню ===
+    // === ЛОГИКА МОБИЛЬНОГО МЕНЮ И ГАМБУРГЕРА (Оптимизировано) ===
     const burgerCanvas = document.getElementById('burgerCanvas');
     const closeCanvas = document.querySelector('.close-canvas');
     const burgerButton = document.getElementById('burgerMenu');
     const mobileMenu = document.getElementById('mobileMenu');
     const closeBtn = document.getElementById('closeMobileMenu');
+    const mobileBreakpoint = 768; // Ширина экрана, при которой навигация переключается
 
     let burgerAnim = null;
     let closeIcon = null;
@@ -48,82 +78,106 @@ document.addEventListener('DOMContentLoaded', () => {
     if (burgerCanvas) burgerAnim = new BurgerGameOfLife(burgerCanvas);
     if (closeCanvas) closeIcon = new ClosePixelIcon(closeCanvas);
 
-    const safeCloseMenu = () => {
-        if (closeIcon && mobileMenu.classList.contains('open')) {
-            closeIcon.animateOut(() => {
-                if (burgerAnim) burgerAnim.toggle();
-                mobileMenu.classList.remove('open');
-                document.body.style.overflow = '';
-            });
-        } else {
+    const isMenuOpen = () => mobileMenu?.classList.contains('open');
+
+    // Функция для безопасного закрытия меню с анимацией и сбросом scroll lock
+    const safeCloseMenu = (callback = () => {}) => {
+        if (!isMenuOpen()) return;
+
+        const finalizeClose = () => {
             if (burgerAnim) burgerAnim.toggle();
             mobileMenu.classList.remove('open');
-            document.body.style.overflow = '';
+            document.body.classList.remove('menu-open'); // Используем класс для scroll lock
+            callback();
+        };
+
+        if (closeIcon) {
+            // Если есть анимация закрытия, используем ее (callback завершит закрытие)
+            closeIcon.animateOut(finalizeClose);
+        } else {
+            // Иначе закрываем немедленно
+            finalizeClose();
         }
     };
 
+    // Функция для открытия меню
+    const openMenu = () => {
+        if (isMenuOpen()) return;
+        
+        mobileMenu.classList.add('open');
+        document.body.classList.add('menu-open'); // Используем класс для scroll lock
+        
+        if (burgerAnim) burgerAnim.toggle();
+        if (closeIcon) closeIcon.animateIn();
+    };
+
+    // 1. Обработчик нажатия на кнопку гамбургера
     burgerButton?.addEventListener('click', (e) => {
         e.stopPropagation();
-        if (!mobileMenu.classList.contains('open')) {
-            mobileMenu.classList.add('open');
-            document.body.style.overflow = 'hidden';
-            if (burgerAnim) burgerAnim.toggle();
-            if (closeIcon) closeIcon.animateIn();
-        } else {
+        if (isMenuOpen()) {
             safeCloseMenu();
+        } else {
+            openMenu();
         }
     });
 
+    // 2. Обработчик нажатия на кнопку закрытия
     closeBtn?.addEventListener('click', (e) => {
         e.stopPropagation();
-        if (mobileMenu.classList.contains('open')) {
-            safeCloseMenu();
-        }
+        safeCloseMenu();
     });
 
-    mobileMenu.querySelectorAll('a').forEach(link => {
+    // 3. Закрытие меню при клике на любую якорную ссылку внутри него
+    mobileMenu?.querySelectorAll('a').forEach(link => {
         link.addEventListener('click', (e) => {
             const href = link.getAttribute('href');
             if (href && href.startsWith('#')) {
                 e.preventDefault();
                 const target = document.querySelector(href);
                 if (target) {
-                    safeCloseMenu();
-                    setTimeout(() => {
-                        target.scrollIntoView({ behavior: 'smooth' });
-                    }, 400);
+                    // Закрываем меню, а затем плавно скроллим
+                    safeCloseMenu(() => {
+                        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    });
                 }
             }
         });
     });
 
+    // 4. Закрытие меню по клику вне области меню
     document.addEventListener('click', (e) => {
-        if (mobileMenu.classList.contains('open') && !mobileMenu.contains(e.target) && !burgerButton.contains(e.target)) {
+        if (isMenuOpen() && !mobileMenu.contains(e.target) && !burgerButton.contains(e.target)) {
             safeCloseMenu();
         }
     });
 
+    // 5. Закрытие меню при изменении размера экрана на десктоп
     window.addEventListener('resize', () => {
-        if (window.innerWidth > 768 && mobileMenu.classList.contains('open')) {
-            safeCloseMenu();
+        if (window.innerWidth > mobileBreakpoint && isMenuOpen()) {
+            // Принудительное закрытие, просто сброс классов без анимации
+            if (burgerAnim) burgerAnim.toggle();
+            mobileMenu.classList.remove('open');
+            document.body.classList.remove('menu-open');
         }
     });
 
-    // === Плавная прокрутка по якорям ===
+    // === Плавная прокрутка по якорям (Для десктопа) ===
     document.querySelectorAll('a[href^="#"]:not([href="#"])').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             const targetId = this.getAttribute('href').substring(1);
             const target = document.getElementById(targetId);
-            if (target) {
+            if (target && !mobileMenu.contains(this)) { // Игнорируем ссылки в мобильном меню
                 e.preventDefault();
                 target.scrollIntoView({ behavior: 'smooth', block: 'start' });
             }
         });
     });
 
-    // === ЛОГОТИП GigaCode ВМЕСТО BETA — ПРАВЫЙ НИЖНИЙ УГОЛ ===
+    // === ДОБАВЛЕНИЕ ЭЛЕМЕНТОВ В DOM ===
+
+    // ЛОГОТИП GigaCode ВМЕСТО BETA — ПРАВЫЙ НИЖНИЙ УГОЛ
     const gigacodeBadge = document.createElement('a');
-    gigacodeBadge.href = 'https://github.com/Cifrotrans/digital-philosophy'; // 
+    gigacodeBadge.href = 'https://github.com/Cifrotrans/digital-philosophy';
     gigacodeBadge.target = '_blank';
     gigacodeBadge.rel = 'noopener noreferrer';
     gigacodeBadge.style.cssText = `
@@ -168,7 +222,7 @@ document.addEventListener('DOMContentLoaded', () => {
     `;
     document.body.appendChild(gigacodeBadge);
 
-    // Анимация пульсации
+    // Анимация пульсации (добавляем стили)
     const style = document.createElement('style');
     style.textContent = `
         @keyframes pulse {
@@ -176,13 +230,15 @@ document.addEventListener('DOMContentLoaded', () => {
             70% { box-shadow: 0 0 0 10px rgba(0, 255, 255, 0); }
             100% { box-shadow: 0 0 0 0 rgba(0, 255, 255, 0); }
         }
-        ${gigacodeBadge.style.cssText} &:hover {
+        /* Добавляем эффект ховера */
+        #gigacodeBadge:hover {
             transform: scale(1.1);
         }
     `;
     document.head.appendChild(style);
+    gigacodeBadge.id = 'gigacodeBadge'; // Для применения ховер-стиля
 
-    // === "POWERED BY AI" В ШАПКУ ===
+    // "POWERED BY AI" В ШАПКУ
     const poweredByAI = document.createElement('div');
     poweredByAI.innerHTML = `
         <div style="
@@ -211,7 +267,7 @@ document.addEventListener('DOMContentLoaded', () => {
         header.appendChild(poweredByAI);
     }
 
-    // === ПОДПИСЬ В ФУТЕР — КЛИКАБЕЛЬНАЯ ===
+    // ПОДПИСЬ В ФУТЕР — КЛИКАБЕЛЬНАЯ
     const footer = document.querySelector('footer');
     if (footer) {
         const aiCredit = document.createElement('p');
@@ -230,7 +286,6 @@ document.addEventListener('DOMContentLoaded', () => {
             ">
                 Сайт разработан с использованием 
                 <a href="https://github.com/Cifrotrans/digital-philosophy" 
-                  
                    style="color: #00ffff; text-decoration: underline; font-weight: 500;">
                     GigaChat и Perplexity AI
                 </a> 
@@ -241,6 +296,7 @@ document.addEventListener('DOMContentLoaded', () => {
         footer.appendChild(aiCredit);
     }
 });
+
 // === ЭФФЕКТ ПЕЧАТИ ТЕКСТА В #methods ===
 document.addEventListener('DOMContentLoaded', () => {
     const quoteElement = document.getElementById('typingQuote');
