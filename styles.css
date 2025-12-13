@@ -1181,7 +1181,7 @@ header {
 }
 
 /* Основной мобильный breakpoint */
-@media (max-width: 768px) {
+@media (max-width: 1058px) {
   .main-nav {
     display: none !important;
   }
