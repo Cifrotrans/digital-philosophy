@@ -1150,6 +1150,82 @@ header {
    МЕДИА-ЗАПРОСЫ
    ============================================ */
 
+/* ============================================
+   МЕДИА-ЗАПРОСЫ
+   ============================================ */
+
+/* Вертикальный макет с крупным шрифтом начиная с 1058px */
+@media (max-width: 1058px) {
+  .philosophy-grid,
+  .benefits-grid,
+  .course-stats {
+    grid-template-columns: 1fr;
+    gap: 2.2rem;
+  }
+
+  .contact-cards {
+    flex-direction: column;
+    align-items: center;
+    gap: 1.4rem;
+  }
+
+  .contact-card {
+    width: 100%;
+    max-width: 280px;
+  }
+
+  .contact-subtitle {
+    font-size: 1.05rem;
+  }
+
+  .quote-title::after {
+    display: none;
+  }
+
+  .cta-section {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .cta-section .cta-button {
+    width: 85%;
+    text-align: center;
+  }
+
+  .hero-features {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero-features .feature {
+    min-width: 100%;
+    max-width: 280px;
+  }
+
+  .mobile-menu {
+    width: 90%;
+  }
+
+  /* Крупные шрифты для вертикального макета */
+  .hero-title {
+    font-size: clamp(3rem, 6vw, 4.2rem);
+  }
+
+  .section h2 {
+    font-size: clamp(2.5rem, 6vw, 3.5rem);
+  }
+
+  .quote-title {
+    font-size: clamp(3.2rem, 7vw, 4.5rem);
+  }
+
+  .philosophy-card h3,
+  .benefit-card h3,
+  .stat .stat-number {
+    font-size: 1.8rem;
+  }
+}
+
 /* Терминал на очень маленьких экранах */
 @media (max-width: 600px) {
   .terminal-line {
@@ -1181,7 +1257,7 @@ header {
 }
 
 /* Основной мобильный breakpoint */
-/* @media (max-width: 1058px) {
+@media (max-width: 768px) {
   .main-nav {
     display: none !important;
   }
@@ -1303,57 +1379,5 @@ header {
     left: 10px;
     max-height: 40vh;
   }
-} */
-
-/* Маленькие мобильные */
-@media (max-width: 1058px) {
-  .philosophy-grid,
-  .benefits-grid,
-  .course-stats {
-    grid-template-columns: 1fr;
-    gap: 2.2rem;
-  }
-
-  .contact-cards {
-    flex-direction: column;
-    align-items: center;
-    gap: 1.4rem;
-  }
-
-  .contact-card {
-    width: 100%;
-    max-width: 280px;
-  }
-
-  .contact-subtitle {
-    font-size: 1.05rem;
-  }
-
-  .quote-title::after {
-    display: none;
-  }
-
-  .cta-section {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .cta-section .cta-button {
-    width: 85%;
-    text-align: center;
-  }
-
-  .hero-features {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .hero-features .feature {
-    min-width: 100%;
-    max-width: 280px;
-  }
-
-  .mobile-menu {
-    width: 90%;
-  }
 }
+
