@@ -19,6 +19,15 @@ body {
   line-height: 1.6;
   overflow-x: hidden;
 }
+body.is-mobile .main-nav,
+body.is-tablet .main-nav {
+    display: none; /* Скрываем основное меню на мобильных и планшетах */
+}
+
+body.is-mobile .burger-menu,
+body.is-tablet .burger-menu {
+    display: block; /* Показываем бургер-меню на мобильных и планшетах */
+}
 
 .container {
   width: 90%;
