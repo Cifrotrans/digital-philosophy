@@ -201,23 +201,23 @@ header {
 }
 
 .mobile-menu {
-    position: fixed;
-    top: 0;
-    right: -100%;
-    width: 80%;
-    max-width: 320px;
-    height: 100vh;
-    background: var(--primary-color);
-    z-index: 1001;
-    transition: right 0.4s ease;
-    border-left: 1px solid rgba(255, 255, 255, 0.1);
-    overflow-y: auto;
-   right: -100%
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 80%;
+  max-width: 320px;
+  height: 100vh;
+  background: var(--primary-color);
+  z-index: 1001;
+  transition: right 0.4s ease;
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
+  overflow-y: auto;
 }
 
 .mobile-menu.open {
-    right: 0;
+  right: 0;
 }
+
 
 .mobile-menu-header {
     display: flex;
