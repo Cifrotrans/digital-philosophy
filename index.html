@@ -47,6 +47,66 @@ ymab('metrika.104710362', 'init'/*, {clientFeatures}, {callback}*/);
 </script>
 </head> 
 <body>
+    <script>// Проверяем при загрузке страницы
+document.addEventListener('DOMContentLoaded', function() {
+  checkMobileAndAddLabel();
+  
+  // Проверяем при изменении размера окна (для DevTools)
+  window.addEventListener('resize', checkMobileAndAddLabel);
+});
+
+function checkMobileAndAddLabel() {
+  const h1 = document.querySelector('h1');
+  if (!h1 || !h1.textContent.includes('digital-philosophy.ru')) return;
+  
+  // Мобильные устройства: ширина ≤ 768px
+  if (window.innerWidth <= 768) {
+    // Удаляем старый лейбл если есть
+    const existingLabel = h1.querySelector('.mobile-label');
+    if (existingLabel) existingLabel.remove();
+    
+    // Создаем и добавляем новый лейбл
+    const mobileLabel = document.createElement('span');
+    mobileLabel.className = 'mobile-label';
+    mobileLabel.textContent = ' Мобильная версия';
+    mobileLabel.style.cssText = `
+      color: #00ffff;
+      font-size: 0.7em;
+      font-weight: 400;
+      background: rgba(0, 255, 255, 0.1);
+      padding: 0.2rem 0.6rem;
+      border-radius: 12px;
+      border: 1px solid rgba(0, 255, 255, 0.3);
+      margin-left: 0.8rem;
+      text-shadow: none;
+      box-shadow: 0 0 8px rgba(0, 255, 255, 0.2);
+      animation: pulse 2s infinite;
+    `;
+    
+    h1.appendChild(mobileLabel);
+  } else {
+    // Удаляем лейбл на десктопе
+    const mobileLabel = h1.querySelector('.mobile-label');
+    if (mobileLabel) mobileLabel.remove();
+  }
+}
+
+// Анимация пульсации
+const style = document.createElement('style');
+style.textContent = `
+  @keyframes pulse {
+    0%, 100% { 
+      box-shadow: 0 0 8px rgba(0, 255, 255, 0.2); 
+      transform: scale(1);
+    }
+    50% { 
+      box-shadow: 0 0 15px rgba(0, 255, 255, 0.4); 
+      transform: scale(1.02);
+    }
+  }
+`;
+document.head.appendChild(style);
+    </scriptn>
     <!-- Header -->
     <header>
         <div class="header-container">
