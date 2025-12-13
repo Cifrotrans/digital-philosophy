@@ -1146,9 +1146,8 @@ header {
   user-select: none;
 }
 
-/* ============================================
-   МЕДИА-ЗАПРОСЫ
-   ============================================ */
+
+
 
 /* ============================================
    МЕДИА-ЗАПРОСЫ
@@ -1283,10 +1282,22 @@ header {
     font-size: 1.15rem;
   }
 
+  /* Карточки занимают 90% экрана */
+  .philosophy-card,
+  .benefit-card,
+  .stat {
+    width: 90%;
+    max-width: 90vw;
+    margin: 0 auto 2rem auto;
+    padding: 2rem 1.8rem;
+  }
+
   .hero-features .feature {
     font-size: 0.95rem;
     padding: 0.75rem 1.3rem;
-    min-width: 180px;
+    min-width: 90%;
+    max-width: 90vw;
+    margin: 0 auto 1rem auto;
   }
 
   .cta-button {
@@ -1314,15 +1325,6 @@ header {
     padding: 0 1rem;
   }
 
-  .philosophy-card,
-  .benefit-card,
-  .stat {
-    padding: 1.6rem 1.4rem;
-    border-radius: 14px;
-    margin: 0 auto;
-    max-width: 300px;
-  }
-
   .philosophy-card h3,
   .benefit-card h3,
   .stat .stat-number {
@@ -1339,9 +1341,12 @@ header {
     gap: 1.6rem;
   }
 
+  /* Контактные карточки тоже 90% */
   .contact-card {
-    width: 230px;
+    width: 90%;
+    max-width: 90vw;
     padding: 1.7rem 1.5rem;
+    margin: 0 auto 1.5rem auto;
   }
 
   .card-icon {
@@ -1379,5 +1384,3 @@ header {
     left: 10px;
     max-height: 40vh;
   }
-}
-
