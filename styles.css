@@ -212,6 +212,7 @@ header {
     transition: right 0.4s ease;
     border-left: 1px solid rgba(255, 255, 255, 0.1);
     overflow-y: auto;
+   right: -100%
 }
 
 .mobile-menu.open {
