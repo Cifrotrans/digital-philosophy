@@ -1057,37 +1057,6 @@ header {
   font-weight: 600;
 }
 
-/* Адаптив для подсказок и терминала */
-
-@media (max-width: 600px) {
-  .terminal-line {
-    font-size: 0.95rem;
-    flex-direction: column;
-    gap: 0.5rem;
-    padding: 0.6rem;
-  }
-
-  .terminal-prompt {
-    align-self: flex-start;
-  }
-
-  #terminal-text {
-    text-align: center;
-    word-break: break-word;
-  }
-
-  .hint-text {
-    font-size: 0.85rem;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 0.2rem;
-  }
-
-  .hint-text strong {
-    font-size: 0.95rem;
-  }
-}
-
 /* ============================================
    ХАКЕРСКАЯ КОНСОЛЬ (Ctrl + Alt + T)
    ============================================ */
@@ -1181,13 +1150,48 @@ header {
    МЕДИА-ЗАПРОСЫ
    ============================================ */
 
+/* Терминал на очень маленьких экранах */
+@media (max-width: 600px) {
+  .terminal-line {
+    font-size: 0.95rem;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 0.6rem;
+  }
+
+  .terminal-prompt {
+    align-self: flex-start;
+  }
+
+  #terminal-text {
+    text-align: center;
+    word-break: break-word;
+  }
+
+  .hint-text {
+    font-size: 0.85rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.2rem;
+  }
+
+  .hint-text strong {
+    font-size: 0.95rem;
+  }
+}
+
+/* Основной мобильный breakpoint */
 @media (max-width: 768px) {
   .main-nav {
-    display: none;
+    display: none !important;
   }
 
   .burger-menu {
-    display: block;
+    display: block !important;
+  }
+
+  .header-container {
+    padding: 1rem 1.5rem;
   }
 
   .hero-content {
@@ -1217,6 +1221,10 @@ header {
 
   .section {
     padding: 5rem 1.5rem;
+  }
+
+  .container {
+    padding: 1.5rem 1rem;
   }
 
   .contact-info {
@@ -1286,8 +1294,18 @@ header {
     font-size: 1rem;
     padding: 0.9rem 2rem;
   }
+
+  .hacker-console {
+    width: 90vw;
+    max-width: none;
+    bottom: 10px;
+    right: 10px;
+    left: 10px;
+    max-height: 40vh;
+  }
 }
 
+/* Маленькие мобильные */
 @media (max-width: 500px) {
   .philosophy-grid,
   .benefits-grid,
@@ -1323,5 +1341,19 @@ header {
   .cta-section .cta-button {
     width: 85%;
     text-align: center;
+  }
+
+  .hero-features {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero-features .feature {
+    min-width: 100%;
+    max-width: 280px;
+  }
+
+  .mobile-menu {
+    width: 90%;
   }
 }
