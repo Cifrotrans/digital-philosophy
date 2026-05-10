@@ -152,5 +152,33 @@
             .block p, .block ul { padding: 0 1rem; }
             .button { width: 99%;padding:1px;margin: 0 auto; display: block; }
         }
+/* === IMPROVED BURGER MENU FIXES === */
+.hamburger-menu {
+    position: relative;
+    z-index: 1001;
+}
 
+.mobile-nav {
+    transition: left 0.4s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+.mobile-nav.is-active {
+    box-shadow: -5px 0 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Make sure hamburger bars are visible */
+.hamburger-menu .bar {
+    background-color: var(--dark-color) !important;
+}
+
+/* Better mobile experience */
+@media (max-width: 768px) {
+    .mobile-nav a {
+        transition: color 0.2s ease;
+    }
+    
+    .mobile-nav a:active {
+        color: var(--primary-color);
+    }
+}
  
